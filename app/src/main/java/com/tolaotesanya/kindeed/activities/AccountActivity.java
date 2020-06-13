@@ -8,6 +8,7 @@ import com.tolaotesanya.kindeed.helper.BottomNavPresenter;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class AccountActivity extends AppCompatActivity {
 
@@ -19,8 +20,14 @@ public class AccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
 
+        setupToolbar();
         setupBottomNav();
 
+    }
+    private void setupToolbar() {
+        Toolbar mToolbar = findViewById(R.id.account_toolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setTitle("Account");
     }
 
     private void setupBottomNav() {

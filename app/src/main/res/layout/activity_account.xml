@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".activities.AccountActivity">
 
-    <include layout="@layout/app_bar_layout" android:id="@+id/register_toolbar"/>
+    <include layout="@layout/app_bar_layout" android:id="@+id/account_toolbar"/>
     <Button
         android:id="@+id/login_button"
         android:layout_width="200dp"
