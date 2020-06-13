@@ -8,8 +8,7 @@ import com.tolaotesanya.kindeed.activities.auth.LoginActivity;
 import com.tolaotesanya.kindeed.activities.auth.RegisterActivity;
 
 public class IntentPresenter {
-
-
+    
     public void presentIntent(Context context, ActivityClassName activity) {
         switch (activity) {
             case register:
