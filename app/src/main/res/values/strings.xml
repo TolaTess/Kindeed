@@ -9,4 +9,7 @@
     <string name="password">password</string>
     <string name="com_auth0_client_id">nKrdCUOqTaT3yyH39I5deWJ6uNRnWpJG</string>
     <string name="com_auth0_domain">dev-uugk8azf.eu.auth0.com</string>
+    <string name="home">Home</string>
+    <string name="account">Account</string>
+    <string name="logout">logout</string>
 </resources>
