@@ -1,4 +1,4 @@
-package com.tolaotesanya.kindeed;
+package com.tolaotesanya.kindeed.modellayer.enums;
 
 public enum ActivityClassName {
 

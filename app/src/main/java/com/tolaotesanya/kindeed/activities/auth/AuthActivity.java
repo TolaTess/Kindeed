@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.tolaotesanya.kindeed.ActivityClassName;
+import com.tolaotesanya.kindeed.modellayer.enums.ActivityClassName;
 import com.tolaotesanya.kindeed.coordinator.IntentPresenter;
 import com.tolaotesanya.kindeed.dependencies.DependencyRegistry;
 import com.tolaotesanya.kindeed.R;

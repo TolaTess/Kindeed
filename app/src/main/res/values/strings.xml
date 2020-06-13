@@ -3,4 +3,8 @@
     <string name="create_account">create account</string>
     <string name="login">login</string>
     <string name="welcome_to_kindeed">Welcome to Kindeed</string>
+    <string name="login_msg">Please log in</string>
+    <string name="create_a_new_account">Create a new Account</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
 </resources>
