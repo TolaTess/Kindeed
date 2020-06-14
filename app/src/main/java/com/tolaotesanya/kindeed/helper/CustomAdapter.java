@@ -1,11 +1,14 @@
 package com.tolaotesanya.kindeed.helper;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.tolaotesanya.kindeed.R;
+import com.tolaotesanya.kindeed.coordinator.IntentPresenter;
+import com.tolaotesanya.kindeed.modellayer.enums.ActivityClassName;
 
 import java.util.List;
 
@@ -16,11 +19,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyView> {
 
     private List<String> list;
     private int layoutid;
+    private IntentPresenter intentPresenter;
+    private Context context;
 
-    public CustomAdapter(List<String> horizontalList, int layoutid)
+    public CustomAdapter(List<String> horizontalList, int layoutid, IntentPresenter intentPresenter, Context context)
     {
         this.list = horizontalList;
         this.layoutid = layoutid;
+        this.intentPresenter = intentPresenter;
+        this.context = context;
     }
 
     @NonNull
@@ -38,7 +45,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyView> {
 
     @Override
     public void onBindViewHolder(@NonNull MyView holder, int position) {
-        holder.textView.setText(list.get(position));
+        final String itemName = list.get(position);
+        holder.textView.setText(itemName);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intentPresenter.presentIntent(context, ActivityClassName.item, itemName);
+            }
+        });
     }
 
     @Override

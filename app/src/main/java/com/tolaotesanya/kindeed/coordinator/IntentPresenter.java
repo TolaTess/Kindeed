@@ -9,14 +9,19 @@ import com.auth0.android.authentication.storage.SecureCredentialsManager;
 import com.auth0.android.callback.BaseCallback;
 import com.auth0.android.result.Credentials;
 import com.tolaotesanya.kindeed.MainActivity;
+import com.tolaotesanya.kindeed.activities.ItemActivity;
 import com.tolaotesanya.kindeed.activities.auth.AuthActivity;
 import com.tolaotesanya.kindeed.modellayer.enums.ActivityClassName;
 
 public class IntentPresenter {
 
-    public void presentIntent(Context context, ActivityClassName activity) {
+    public void presentIntent(Context context, ActivityClassName activity, String name) {
         switch (activity) {
-
+            case item:
+                Intent intent = new Intent(context, ItemActivity.class);
+                intent.putExtra("itemName", name);
+                context.startActivity(intent);
+                break;
         }
 
     }

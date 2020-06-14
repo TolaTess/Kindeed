@@ -5,19 +5,16 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
-import com.tolaotesanya.kindeed.activities.AccountActivity;
-import com.tolaotesanya.kindeed.activities.KindeedActivity;
 import com.tolaotesanya.kindeed.activities.auth.AuthActivity;
+import com.tolaotesanya.kindeed.coordinator.IntentPresenter;
+import com.tolaotesanya.kindeed.dependencies.DependencyRegistry;
 import com.tolaotesanya.kindeed.helper.BottomNavPresenter;
 import com.tolaotesanya.kindeed.helper.CustomAdapter;
 
@@ -29,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView, recyclerView2;
     ArrayList<String> source;
     ArrayList<String> source2;
+    private IntentPresenter intentPresenter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,16 +45,22 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView2 =  findViewById(R.id.recyclerview2);
         AddItemsToRecyclerViewArrayList();
+        DependencyRegistry.shared.inject(this);
         addRec1();
         addRec2();
 
+
+
+    }
+    public void configureWith(IntentPresenter intentPresenter) {
+        this.intentPresenter = intentPresenter;
     }
 
     public void addRec1(){
         RecyclerView.LayoutManager recyclerViewLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(recyclerViewLayoutManager);
         int layoutid = R.layout.recycler_service;
-        CustomAdapter adapter = new CustomAdapter(source, layoutid);
+        CustomAdapter adapter = new CustomAdapter(source, layoutid, intentPresenter, this);
         LinearLayoutManager HorizontalLayout = new LinearLayoutManager(MainActivity.this,
                 LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(HorizontalLayout);
@@ -66,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager recyclerViewLayoutManager  = new LinearLayoutManager(getApplicationContext());
         recyclerView2.setLayoutManager(recyclerViewLayoutManager);
         int layoutid = R.layout.recycler_items;
-        CustomAdapter adapter = new CustomAdapter(source2, layoutid);
+        CustomAdapter adapter = new CustomAdapter(source2, layoutid, intentPresenter, this);
         LinearLayoutManager HorizontalLayout = new LinearLayoutManager(MainActivity.this,
                 LinearLayoutManager.HORIZONTAL, false);
         recyclerView2.setLayoutManager(HorizontalLayout);
@@ -113,19 +118,19 @@ public class MainActivity extends AppCompatActivity {
     public void AddItemsToRecyclerViewArrayList() {
         // Adding items to ArrayList
         source = new ArrayList<>();
-        source.add("fish");
-        source.add("avocado");
-        source.add("banana");
-        source.add("rice");
-        source.add("potato");
-        source.add("tomatoes");
-        source.add("cabbage");
+        source.add("Foods");
+        source.add("HandyWork");
+        source.add("TimeShare");
 
         source2 = new ArrayList<>();
-        source2.add("Love");
-        source2.add("Clean");
-        source2.add("Fix");
-        source2.add("Mend");
-        source2.add("Time");
+        source2.add("fish");
+        source2.add("avocado");
+        source2.add("banana");
+        source2.add("rice");
+        source2.add("potato");
+        source2.add("tomatoes");
+        source2.add("cabbage");
     }
+
+
 }

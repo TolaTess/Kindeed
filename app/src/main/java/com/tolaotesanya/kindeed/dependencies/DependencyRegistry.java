@@ -4,6 +4,8 @@ import com.auth0.android.Auth0;
 import com.auth0.android.authentication.AuthenticationAPIClient;
 import com.auth0.android.authentication.storage.SecureCredentialsManager;
 import com.auth0.android.authentication.storage.SharedPreferencesStorage;
+import com.tolaotesanya.kindeed.MainActivity;
+import com.tolaotesanya.kindeed.activities.KindeedActivity;
 import com.tolaotesanya.kindeed.activities.auth.AuthActivity;
 import com.tolaotesanya.kindeed.coordinator.IntentPresenter;
 
@@ -20,6 +22,14 @@ public class DependencyRegistry {
                 new AuthenticationAPIClient(auth0),
                 new SharedPreferencesStorage(activity));
         activity.configureWith(auth0, credentialsManager, intentPresenter);
+    }
+
+    public void inject(MainActivity activity){
+        activity.configureWith(intentPresenter);
+    }
+
+    public void inject(KindeedActivity activity){
+        activity.configureWith(intentPresenter);
     }
 
 }
