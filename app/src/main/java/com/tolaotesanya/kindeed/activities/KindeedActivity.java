@@ -44,12 +44,12 @@ public class KindeedActivity extends AppCompatActivity {
         AddItemsToRecyclerViewArrayList();
         DependencyRegistry.shared.inject(this);
         // with source list as a parameter
-        int layoutid = R.layout.recycler_service;
+        int layoutid = R.layout.recycler_basket;
         adapter = new CustomAdapter(source, layoutid, intentPresenter, this);
         // Set Horizontal Layout Manager
         // for Recycler view
         HorizontalLayout = new LinearLayoutManager(KindeedActivity.this,
-                LinearLayoutManager.HORIZONTAL, false);
+                LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(HorizontalLayout);
         // Set adapter on recycler view
         recyclerView.setAdapter(adapter);
@@ -63,7 +63,9 @@ public class KindeedActivity extends AppCompatActivity {
     private void setupToolbar() {
         RelativeLayout mToolbar = findViewById(R.id.kindeed_toolbar);
         TextView toolbarText = mToolbar.findViewById(R.id.title_toolbar);
-        toolbarText.setText("Basket");
+        TextView toolbarDesc = mToolbar.findViewById(R.id.desc_toolbar);
+        toolbarText.setText("Tola");
+        toolbarDesc.setText("your basket");
     }
 
     private void setupBottomNav() {
@@ -80,10 +82,6 @@ public class KindeedActivity extends AppCompatActivity {
         source.add("fish");
         source.add("avocado");
         source.add("banana");
-        source.add("rice");
-        source.add("potato");
-        source.add("tomatoes");
-        source.add("cabbage");
     }
 
 

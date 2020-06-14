@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
         // Adding items to ArrayList
         source = new ArrayList<>();
         source.add("Banana");
-        source.add("Bread");
+        source.add("Help");
         source.add("Milk");
 
         source2 = new ArrayList<>();
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
 
         source3 = new ArrayList<>();
         source3.add("Food Drive");
-        source3.add("Commune Cleaning");
+        source3.add("Cleaning");
         source3.add("Help");
 
     }
