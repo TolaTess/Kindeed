@@ -6,24 +6,31 @@
     android:paddingTop="20dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/kindeed_logo" />
+
     <TextView
-        android:id="@+id/title_toolbar"
+        android:id="@+id/item_title_toolbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:fontFamily="@font/amarante"
         android:text="Kindeed,"
-        android:textColor="@color/colorGrey"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/colorBlack"
         android:textSize="28sp" />
 
     <TextView
-        android:id="@+id/desc_toolbar"
+        android:id="@+id/item_desc_toolbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/title_toolbar"
+        android:layout_below="@+id/item_title_toolbar"
         android:fontFamily="@font/abhaya_libre"
+        android:layout_centerHorizontal="true"
         android:text="Sharing is caring"
-        android:textColor="@color/colorBlack"
+        android:textColor="@color/colorGrey"
         android:textSize="20sp" />
 
 </RelativeLayout>

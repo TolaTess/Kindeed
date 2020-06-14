@@ -6,10 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".activities.ItemActivity">
 
+    <include layout="@layout/item_bar_layout"
+        android:id="@+id/item_toolbar"/>
+
     <RelativeLayout
         android:id="@+id/rel1"
+        android:layout_below="@id/item_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="400dp">
+        android:layout_height="300dp">
 
         <ImageView
             android:id="@+id/item_image"
@@ -20,24 +24,10 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/item_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rel1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/abhaya_libre"
-        android:gravity="center"
-        android:text="Item"
-        android:textAlignment="center"
-        android:textColor="@color/colorBlack"
-        android:textSize="30sp" />
-
-    <TextView
         android:id="@+id/item_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/item_title"
+        android:layout_below="@+id/rel1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/abhaya_libre"
@@ -45,7 +35,7 @@
         android:text="Price"
         android:textAlignment="center"
         android:textColor="@color/colorBlack"
-        android:textSize="20sp" />
+        android:textSize="22sp" />
 
     <include
         android:id="@+id/quanity"
@@ -53,7 +43,7 @@
         android:layout_below="@+id/item_price"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"/>
 
     <include
