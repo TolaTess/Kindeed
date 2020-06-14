@@ -9,18 +9,6 @@
 
     <include layout="@layout/app_bar_layout" android:id="@+id/account_toolbar"/>
 
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="68dp"
-        android:fontFamily="@font/amarante"
-        android:text="Account"
-        android:textSize="24sp" />
-
     <include layout="@layout/bottom_nav_bar"/>
 
 

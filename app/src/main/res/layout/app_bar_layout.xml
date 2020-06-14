@@ -1,10 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main_app_bar"
     android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
-    android:background="@color/colorPrimary"
-    android:elevation="2dp"
+    android:layout_height="100dp"
+    android:paddingStart="20dp"
+    android:paddingTop="20dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-</androidx.appcompat.widget.Toolbar>
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/kindeed_logo"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/title_toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/amarante"
+        android:text="Kindeed,"
+        android:textColor="@color/colorGrey"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/desc_toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_toolbar"
+        android:fontFamily="@font/abhaya_libre"
+        android:text="Sharing is caring"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp" />
+
+</RelativeLayout>

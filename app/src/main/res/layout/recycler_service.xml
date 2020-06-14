@@ -2,22 +2,39 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/cardview"
-        android:layout_width="180dp"
-        android:layout_height="120dp"
-        android:layout_margin="20dp"
+        android:layout_width="200dp"
+        android:layout_height="180dp"
+        android:layout_margin="10dp"
         card_view:cardBackgroundColor="@color/colorAccent"
-        card_view:cardCornerRadius="15dp"
+        card_view:cardCornerRadius="20dp"
         card_view:cardElevation="1dp"
         card_view:contentPadding="5dp">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/kindeed_logo"/>
+
         <TextView
             android:id="@+id/sample_text"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:textAlignment="center"
             android:layout_marginBottom="4dp"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/archivo_black"
+           android:text="text"
             android:layout_marginTop="4dp"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/colorWhite"
             android:textSize="22dp" />
+
+    </RelativeLayout>
+
+
 
     </androidx.cardview.widget.CardView>
