@@ -1,6 +1,7 @@
 package com.tolaotesanya.kindeed.activities;
 
 import android.os.Bundle;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
@@ -33,7 +34,7 @@ public class KindeedActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kindeed);
-        //setupToolbar();
+        setupToolbar();
         setupBottomNav();
 
         recyclerView = findViewById(R.id.recyclerview);
@@ -59,13 +60,11 @@ public class KindeedActivity extends AppCompatActivity {
         this.intentPresenter = intentPresenter;
     }
 
-   /* private void setupToolbar() {
-        Toolbar mToolbar = findViewById(R.id.kindeed_toolbar);
-        TextView toolbarText = mToolbar.findViewById(R.id.toolbar_title);
-        setSupportActionBar(mToolbar);
-        toolbarText.setText("Kindeed");
-        getSupportActionBar().setDisplayShowTitleEnabled(true);
-    }*/
+    private void setupToolbar() {
+        RelativeLayout mToolbar = findViewById(R.id.kindeed_toolbar);
+        TextView toolbarText = mToolbar.findViewById(R.id.title_toolbar);
+        toolbarText.setText("Basket");
+    }
 
     private void setupBottomNav() {
         BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavViewBar);

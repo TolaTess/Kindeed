@@ -1,6 +1,7 @@
 package com.tolaotesanya.kindeed.activities;
 
 import android.os.Bundle;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
@@ -9,7 +10,6 @@ import com.tolaotesanya.kindeed.helper.BottomNavPresenter;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 public class AccountActivity extends AppCompatActivity {
 
@@ -21,17 +21,15 @@ public class AccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
 
-        //setupToolbar();
+        setupToolbar();
         setupBottomNav();
 
     }
-   /* private void setupToolbar() {
-        Toolbar mToolbar = findViewById(R.id.account_toolbar);
-        TextView toolbarText = mToolbar.findViewById(R.id.toolbar_title);
-        setSupportActionBar(mToolbar);
+    private void setupToolbar() {
+        RelativeLayout mToolbar = findViewById(R.id.account_toolbar);
+        TextView toolbarText = mToolbar.findViewById(R.id.title_toolbar);
         toolbarText.setText("Account");
-        getSupportActionBar().setDisplayShowTitleEnabled(true);
-    }*/
+    }
 
     private void setupBottomNav() {
         BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavViewBar);

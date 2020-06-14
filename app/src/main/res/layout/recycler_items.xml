@@ -43,7 +43,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginBottom="1dp"
             android:layout_marginTop="1dp"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/colorGrey"
             android:textSize="14dp"
             />
         <TextView

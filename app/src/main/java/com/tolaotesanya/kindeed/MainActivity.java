@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //setupToolbar();
         setupBottomNav();
 
         recyclerView = findViewById(R.id.recyclerview);
@@ -131,11 +130,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
-
-    private void setupToolbar() {
-
-    }
-
 
     private void logout() {
         Intent intent = new Intent(this, AuthActivity.class);
