@@ -3,10 +3,9 @@
 
     <scale
         android:duration="1000"
-        android:fromXScale="10dp"
-        android:toXScale="100dp"/>
-    <alpha android:fromAlpha="0.1"
-        android:toAlpha="1.0"
-        android:duration="1000"/>
+        android:fromXScale="1"
+        android:toXScale="2"
+        android:fromYScale="1"
+        android:toYScale="2" />
 
 </set>
