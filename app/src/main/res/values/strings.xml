@@ -12,4 +12,19 @@
     <string name="home">Home</string>
     <string name="account">Account</string>
     <string name="logout">logout</string>
+    <string name="description">Description</string>
+    <string name="price_sample">5 EUR</string>
+    <string name="sample_product_name">Bread</string>
+    <string name="quantity">quantity</string>
+    <string name="slogan">Sharing is caring</string>
+    <string name="kindeed">Kindeed,</string>
+    <string name="category">Category</string>
+    <string name="image">Image</string>
+    <string name="save">Save</string>
+    <string name="add_new_product_msg">Add new Product</string>
+    <string name="recommended_for_you">Recommended for you</string>
+    <string name="add_product">add product</string>
+    <string name="perfect_with">Perfect with</string>
+    <string name="add_to_basket">Add to basket</string>
+    <string name="quantity_sample">1</string>
 </resources>

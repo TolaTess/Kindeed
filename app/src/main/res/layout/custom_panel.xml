@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Subheading"
+        android:text="@string/sample_product_name"
         android:padding="10dp"
         android:fontFamily="@font/abhaya_libre"
         android:textSize="18sp"

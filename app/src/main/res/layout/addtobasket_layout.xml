@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:gravity="center"
-            android:text="Add to basket"
+            android:text="@string/add_to_basket"
             android:padding="10dp"
             android:fontFamily="@font/abhaya_libre"
             android:textSize="18sp"

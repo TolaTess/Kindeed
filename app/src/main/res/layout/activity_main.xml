@@ -57,7 +57,7 @@
                     android:layout_marginBottom="5dp"
                     android:layout_marginStart="20dp"
                     android:fontFamily="@font/abhaya_libre"
-                    android:text="Recommended for you"
+                    android:text="@string/recommended_for_you"
                     android:textColor="@color/colorBlack"
                     android:textSize="18sp" />
 
@@ -80,7 +80,7 @@
             android:layout_alignParentEnd="true"
             android:layout_below="@id/rel2"
             android:layout_margin="16dp"
-            android:contentDescription="add product"
+            android:contentDescription="@string/add_product"
             android:src="@drawable/ic_add_black_24dp"/>
 
 

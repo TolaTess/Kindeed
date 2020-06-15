@@ -30,32 +30,32 @@
             android:layout_marginTop="3dp"
             android:fontFamily="@font/archivo_black"
             android:maxWidth="200dp"
-            android:text="text"
+            android:text="@string/sample_product_name"
             android:textColor="@color/colorBlack"
-            android:textSize="18dp" />
+            android:textSize="18sp" />
         <TextView
             android:id="@+id/sample_desc"
             android:layout_below="@+id/sample_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Description"
+            android:text="@string/description"
             android:fontFamily="@font/abhaya_libre"
             android:layout_marginStart="5dp"
             android:layout_marginBottom="1dp"
             android:layout_marginTop="1dp"
             android:textColor="@color/colorGrey"
-            android:textSize="14dp"
+            android:textSize="16sp"
             />
         <TextView
             android:id="@+id/sample_price"
             android:layout_below="@+id/sample_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5 EUR"
+            android:text="@string/price_sample"
             android:fontFamily="@font/amarante"
             android:layout_marginStart="5dp"
             android:textColor="@color/colorAccent2"
-            android:textSize="14dp" />
+            android:textSize="16sp" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
@@ -68,8 +68,8 @@
             android:layout_marginEnd="5dp">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:padding="7dp"
                 android:src="@drawable/cart"/>
 

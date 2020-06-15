@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:fontFamily="@font/amarante"
-        android:text="Kindeed,"
+        android:text="@string/kindeed"
         android:layout_centerHorizontal="true"
         android:textColor="@color/colorBlack"
         android:textSize="28sp" />
@@ -30,7 +30,7 @@
         android:layout_below="@+id/item_title_toolbar"
         android:fontFamily="@font/abhaya_libre"
         android:layout_centerHorizontal="true"
-        android:text="Sharing is caring"
+        android:text="@string/slogan"
         android:textColor="@color/colorGrey"
         android:textSize="20sp" />
 

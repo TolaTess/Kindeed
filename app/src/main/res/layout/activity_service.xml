@@ -83,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:fontFamily="@font/abhaya_libre"
-                    android:text="Perfect with"
+                    android:text="@string/perfect_with"
                     android:textColor="@color/colorBlack"
                     android:textSize="18sp" />
 

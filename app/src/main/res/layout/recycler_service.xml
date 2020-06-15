@@ -28,10 +28,10 @@
             android:layout_marginBottom="4dp"
             android:layout_centerInParent="true"
             android:fontFamily="@font/archivo_black"
-           android:text="text"
+           android:text="@string/sample_product_name"
             android:layout_marginTop="4dp"
             android:textColor="@color/colorWhite"
-            android:textSize="22dp" />
+            android:textSize="22sp" />
 
     </RelativeLayout>
 
