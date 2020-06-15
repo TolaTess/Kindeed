@@ -26,8 +26,9 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:id="@+id/quanity_minus"
-                android:src="@drawable/kindeed_logo"/>
+                android:id="@+id/basket_add_to"
+                android:padding="7dp"
+                android:src="@drawable/cart"/>
 
         </androidx.cardview.widget.CardView>
         <TextView
