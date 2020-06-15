@@ -1,14 +1,17 @@
 package com.tolaotesanya.kindeed.helper;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.tolaotesanya.kindeed.R;
+import com.tolaotesanya.kindeed.activities.ItemActivity;
+import com.tolaotesanya.kindeed.activities.ServiceActivity;
 import com.tolaotesanya.kindeed.coordinator.IntentPresenter;
-import com.tolaotesanya.kindeed.modellayer.enums.ActivityClassName;
 import com.tolaotesanya.kindeed.modellayer.model.Product;
 
 import java.util.List;
@@ -23,6 +26,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyView> {
     private IntentPresenter intentPresenter;
     private Context context;
     private List<Product> mProduct;
+    private Activity activity;
 
     public CustomAdapter(int layoutid, IntentPresenter intentPresenter, Context context)
     {
@@ -30,6 +34,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyView> {
         this.layoutid = layoutid;
         this.intentPresenter = intentPresenter;
         this.context = context;
+        activity = (Activity) context;
     }
 
     @NonNull
@@ -47,20 +52,40 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyView> {
     public void onBindViewHolder(@NonNull MyView holder, int position) {
         if(mProduct != null){
             Product current = mProduct.get(position);
-            final String itemName = current.getItemName();
-        holder.textView.setText(itemName);
+            String category = current.getCategory();
+            String itemName = current.getItemName();
+            double price = current.getPrice();
+            String newPrice = String.valueOf(price);
+            String description = current.getDescription();
+            if(layoutid == R.layout.recycler_service){
+                holder.itemNameView.setText(category);
+            } else {
+                holder.itemNameView.setText(itemName);
+                holder.itemPriceView.setText(newPrice + " EUR");
+                holder.itemDescView.setText(description);
+            }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(layoutid == R.layout.recycler_service) {
-                    intentPresenter.presentIntent(context, ActivityClassName.service, itemName);
+                    //intentPresenter.presentIntent(context, ActivityClassName.service, category);
+                    Intent intent = new Intent(context, ServiceActivity.class);
+                    intent.putExtra("category", category);
+                    context.startActivity(intent);
+                    activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 } else{
-                    intentPresenter.presentIntent(context, ActivityClassName.item, itemName);
+                    //intentPresenter.presentIntent(context, ActivityClassName.item, itemName);
+                    Intent intent = new Intent(context, ItemActivity.class);
+                    intent.putExtra("itemName", itemName);
+                    intent.putExtra("desc", description);
+                    intent.putExtra("price", newPrice);
+                    context.startActivity(intent);
+                    activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 }
             }
         });} else {
-            holder.textView.setText("No Products");
+            holder.itemNameView.setText("No Products");
         }
     }
 
@@ -80,11 +105,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyView> {
 
     class MyView extends RecyclerView.ViewHolder{
 
-        TextView textView;
+        TextView itemNameView;
+        TextView itemDescView;
+        TextView itemPriceView;
 
         MyView(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.sample_text);
+            itemNameView = itemView.findViewById(R.id.sample_text);
+            itemDescView = itemView.findViewById(R.id.sample_desc);
+            itemPriceView = itemView.findViewById(R.id.sample_price);
         }
     }
 

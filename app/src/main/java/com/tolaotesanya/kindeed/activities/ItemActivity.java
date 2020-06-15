@@ -22,16 +22,22 @@ public class ItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_item);
 
         String itemname = getIntent().getStringExtra("itemName");
-        setupToolbar(itemname);
+        String desc = getIntent().getStringExtra("desc");
+        String price = getIntent().getStringExtra("price");
+        setupToolbar(itemname, desc, price);
 
     }
 
-    private void setupToolbar(String name) {
+    private void setupToolbar(String name, String desc, String price) {
         RelativeLayout mToolbar = findViewById(R.id.item_toolbar);
         TextView toolbarText = mToolbar.findViewById(R.id.item_title_toolbar);
+        TextView toolbarDesc = mToolbar.findViewById(R.id.item_desc_toolbar);
         ImageView toolbarArrow = mToolbar.findViewById(R.id.item_image_toolbar);
+        TextView priceText = findViewById(R.id.item_price);
 
         toolbarText.setText(name);
+        toolbarDesc.setText(desc);
+        priceText.setText(price + " EUR");
         toolbarArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

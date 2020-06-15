@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private IntentPresenter intentPresenter;
     private ProductViewModel productViewModel;
     private CustomAdapter adapter;
+    private CustomAdapter serviceAdapter;
 
 
     @Override
@@ -51,8 +52,6 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView2 =  findViewById(R.id.recyclerview2);
-        //AddItemsToRecyclerViewArrayList();
-
 
         addRec1();
         addRec2();
@@ -78,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<Product> products) {
                 adapter.setmProduct(products);
+                serviceAdapter.setmProduct(products);
             }
         });
 
@@ -101,11 +101,11 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager recyclerViewLayoutManager  = new LinearLayoutManager(getApplicationContext());
         recyclerView2.setLayoutManager(recyclerViewLayoutManager);
         int layoutid = R.layout.recycler_items;
-        adapter = new CustomAdapter(layoutid, intentPresenter, this);
+        serviceAdapter = new CustomAdapter(layoutid, intentPresenter, this);
         LinearLayoutManager HorizontalLayout = new LinearLayoutManager(MainActivity.this,
                 LinearLayoutManager.HORIZONTAL, false);
         recyclerView2.setLayoutManager(HorizontalLayout);
-        recyclerView2.setAdapter(adapter);
+        recyclerView2.setAdapter(serviceAdapter);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
