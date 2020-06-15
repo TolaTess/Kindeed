@@ -47,7 +47,7 @@ public class KindeedActivity extends AppCompatActivity {
         DependencyRegistry.shared.inject(this);
         // with source list as a parameter
         int layoutid = R.layout.recycler_basket;
-        adapter = new CustomAdapter(layoutid, intentPresenter, this, source);
+        adapter = new CustomAdapter(layoutid, intentPresenter, this);
         // Set Horizontal Layout Manager
         // for Recycler view
         HorizontalLayout = new LinearLayoutManager(KindeedActivity.this,

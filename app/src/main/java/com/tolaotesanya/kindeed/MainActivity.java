@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.tolaotesanya.kindeed.activities.NewProductActivity;
 import com.tolaotesanya.kindeed.activities.auth.AuthActivity;
@@ -15,6 +17,7 @@ import com.tolaotesanya.kindeed.dependencies.DependencyRegistry;
 import com.tolaotesanya.kindeed.helper.BottomNavPresenter;
 import com.tolaotesanya.kindeed.helper.CustomAdapter;
 import com.tolaotesanya.kindeed.modellayer.database.AppDatabase;
+import com.tolaotesanya.kindeed.modellayer.model.Constants;
 import com.tolaotesanya.kindeed.modellayer.model.Product;
 import com.tolaotesanya.kindeed.viewmodel.ProductViewModel;
 
@@ -56,6 +59,15 @@ public class MainActivity extends AppCompatActivity {
 
         DependencyRegistry.shared.inject(this);
 
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, NewProductActivity.class);
+                startActivityForResult(intent, NEW_PRODUCT_ACTIVITY_REQUEST_CODE);
+            }
+        });
+
     }
 
     public void configureWith(ProductViewModel productViewModel, IntentPresenter intentPresenter) {
@@ -95,7 +107,27 @@ public class MainActivity extends AppCompatActivity {
         recyclerView2.setLayoutManager(HorizontalLayout);
         recyclerView2.setAdapter(adapter);
     }
-    
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == NEW_PRODUCT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            String name = data.getStringExtra(Constants.PRODUCT_NAME);
+            String desc = data.getStringExtra(Constants.PRODUCT_DESC);
+            String category = data.getStringExtra(Constants.PRODUCT_CATEGORY);
+            String price = data.getStringExtra(Constants.PRODUCT_PRICE);
+            double newPrice = Double.parseDouble(price);
+            String image = data.getStringExtra(Constants.PRODUCT_IMAGE);
+
+            Product product = new Product(null, name, desc, category, newPrice, image);
+            productViewModel.insert(product);
+        } else {
+            Toast.makeText(
+                    getApplicationContext(),
+                    "Product not saved",
+                    Toast.LENGTH_LONG).show();
+        }
+    }
 
     private void setupBottomNav() {
         BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavViewBar);

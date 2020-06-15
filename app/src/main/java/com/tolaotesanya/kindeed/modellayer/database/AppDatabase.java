@@ -34,7 +34,7 @@ public abstract class AppDatabase extends RoomDatabase {
                 if (instance == null) {
                     instance = Room.databaseBuilder(context.getApplicationContext(),
                             AppDatabase.class, "kindeed_database")
-                            .addCallback(roomDatabaseCallback)
+                            //.addCallback(roomDatabaseCallback)
                             .build();
                 }
             }
@@ -46,8 +46,6 @@ public abstract class AppDatabase extends RoomDatabase {
         @Override
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-
-
             databaseWriteExecutor.execute(() -> {
                 // Populate the database in the background.
                 // If you want to start with more words, just add them.
@@ -56,8 +54,8 @@ public abstract class AppDatabase extends RoomDatabase {
                 // comment out the following
                 //dao.deleteAll();
 
-                Product product = new Product(null, "Bread", "nice yummy bread", "Non-Organic", 1.20, "bread.jbg");
-                pDAO.insertAll(product);
+                //Product product = new Product(null, "Bread", "nice yummy bread", "Non-Organic", 1.20, "bread.jbg");
+                //pDAO.insertAll(product);
             });
         }
     };

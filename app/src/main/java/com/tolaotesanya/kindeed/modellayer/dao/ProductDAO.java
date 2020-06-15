@@ -13,10 +13,10 @@ import androidx.room.Query;
 @Dao
 public interface ProductDAO {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert
     void insertAll(List<Product> items);
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert
     void insertAll(Product... items);
 
     @Query("DELETE FROM Product")

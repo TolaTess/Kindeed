@@ -46,17 +46,17 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyView> {
     @Override
     public void onBindViewHolder(@NonNull MyView holder, int position) {
         if(mProduct != null){
-        //final String itemName = list.get(position);
             Product current = mProduct.get(position);
-        holder.textView.setText(current.getItemName());
+            final String itemName = current.getItemName();
+        holder.textView.setText(itemName);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(layoutid == R.layout.recycler_service) {
-                    intentPresenter.presentIntent(context, ActivityClassName.service, current.getItemName());
+                    intentPresenter.presentIntent(context, ActivityClassName.service, itemName);
                 } else{
-                    intentPresenter.presentIntent(context, ActivityClassName.item, current.getItemName());
+                    intentPresenter.presentIntent(context, ActivityClassName.item, itemName);
                 }
             }
         });} else {
