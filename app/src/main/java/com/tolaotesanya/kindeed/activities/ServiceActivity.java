@@ -17,6 +17,8 @@ import com.tolaotesanya.kindeed.R;
 import com.tolaotesanya.kindeed.coordinator.IntentPresenter;
 import com.tolaotesanya.kindeed.dependencies.DependencyRegistry;
 import com.tolaotesanya.kindeed.helper.CustomAdapter;
+import com.tolaotesanya.kindeed.modellayer.database.AppDatabase;
+import com.tolaotesanya.kindeed.viewmodel.ProductViewModel;
 
 import java.util.ArrayList;
 
@@ -25,6 +27,7 @@ public class ServiceActivity extends AppCompatActivity {
     RecyclerView recyclerView, recyclerView2;
     ArrayList<String> source, source2, source3, source4;
     private IntentPresenter intentPresenter;
+    private ProductViewModel productViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +39,15 @@ public class ServiceActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView2 =  findViewById(R.id.recyclerview2);
-        AddItemsToRecyclerViewArrayList();
+        //AddItemsToRecyclerViewArrayList();
         DependencyRegistry.shared.inject(this);
         attachRecyclerUI();
 
 
     }
 
-    public void configureWith(IntentPresenter intentPresenter) {
+    public void configureWith(ProductViewModel productViewModel, IntentPresenter intentPresenter) {
+        this.productViewModel = productViewModel;
         this.intentPresenter = intentPresenter;
     }
 
@@ -70,7 +74,7 @@ public class ServiceActivity extends AppCompatActivity {
         recyclerView2.setAdapter(adapter);
     }
 
-    // Function to add items in RecyclerView.
+   /* // Function to add items in RecyclerView.
     public void AddItemsToRecyclerViewArrayList() {
         // Adding items to ArrayList
         source = new ArrayList<>();
@@ -93,7 +97,7 @@ public class ServiceActivity extends AppCompatActivity {
         source4.add("Water");
         source4.add("Beer");
 
-    }
+    }*/
 
     private void setupToolbar(String name) {
         RelativeLayout mToolbar = findViewById(R.id.service_app_toolbar);

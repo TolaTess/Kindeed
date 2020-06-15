@@ -2,28 +2,41 @@ package com.tolaotesanya.kindeed;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+import com.tolaotesanya.kindeed.activities.NewProductActivity;
 import com.tolaotesanya.kindeed.activities.auth.AuthActivity;
 import com.tolaotesanya.kindeed.coordinator.IntentPresenter;
 import com.tolaotesanya.kindeed.dependencies.DependencyRegistry;
 import com.tolaotesanya.kindeed.helper.BottomNavPresenter;
 import com.tolaotesanya.kindeed.helper.CustomAdapter;
+import com.tolaotesanya.kindeed.modellayer.database.AppDatabase;
+import com.tolaotesanya.kindeed.modellayer.model.Product;
+import com.tolaotesanya.kindeed.viewmodel.ProductViewModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
+
     private static final int ACTIVITY_NUM = 0 ;
+    public static final int NEW_PRODUCT_ACTIVITY_REQUEST_CODE = 1;
     RecyclerView recyclerView, recyclerView2;
-    ArrayList<String> source, source2, source3;
+    //ArrayList<String> source, source2, source3;
     private IntentPresenter intentPresenter;
+    private ProductViewModel productViewModel;
+    private CustomAdapter adapter;
 
 
     @Override
@@ -35,27 +48,40 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView2 =  findViewById(R.id.recyclerview2);
-        AddItemsToRecyclerViewArrayList();
-        DependencyRegistry.shared.inject(this);
+        //AddItemsToRecyclerViewArrayList();
+
 
         addRec1();
         addRec2();
 
+        DependencyRegistry.shared.inject(this);
+
     }
 
-    public void configureWith(IntentPresenter intentPresenter) {
+    public void configureWith(ProductViewModel productViewModel, IntentPresenter intentPresenter) {
+        this.productViewModel = productViewModel;
         this.intentPresenter = intentPresenter;
+
+        productViewModel.getmAllproducts().observe(this, new Observer<List<Product>>() {
+            @Override
+            public void onChanged(List<Product> products) {
+                adapter.setmProduct(products);
+            }
+        });
+
+
     }
 
     public void addRec1(){
         RecyclerView.LayoutManager recyclerViewLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(recyclerViewLayoutManager);
         int layoutid = R.layout.recycler_service;
-        CustomAdapter adapter = new CustomAdapter(layoutid, intentPresenter, this, source);
+         adapter = new CustomAdapter(layoutid, intentPresenter, this);
         LinearLayoutManager HorizontalLayout = new LinearLayoutManager(MainActivity.this,
                 LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(HorizontalLayout);
         recyclerView.setAdapter(adapter);
+
     }
 
     public void addRec2(){
@@ -63,13 +89,13 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager recyclerViewLayoutManager  = new LinearLayoutManager(getApplicationContext());
         recyclerView2.setLayoutManager(recyclerViewLayoutManager);
         int layoutid = R.layout.recycler_items;
-        CustomAdapter adapter = new CustomAdapter(layoutid, intentPresenter, this, source2);
+        adapter = new CustomAdapter(layoutid, intentPresenter, this);
         LinearLayoutManager HorizontalLayout = new LinearLayoutManager(MainActivity.this,
                 LinearLayoutManager.HORIZONTAL, false);
         recyclerView2.setLayoutManager(HorizontalLayout);
         recyclerView2.setAdapter(adapter);
     }
-
+    
 
     private void setupBottomNav() {
         BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavViewBar);
@@ -100,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    // Function to add items in RecyclerView.
+   /* // Function to add items in RecyclerView.
     public void AddItemsToRecyclerViewArrayList() {
         // Adding items to ArrayList
         source = new ArrayList<>();
@@ -119,5 +145,5 @@ public class MainActivity extends AppCompatActivity {
         source3.add("Donate Drinks");
         source3.add("Donate Sweets");
 
-    }
+    }*/
 }

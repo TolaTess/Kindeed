@@ -24,7 +24,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyView> {
     private Context context;
     private List<Product> mProduct;
 
-    public CustomAdapter(int layoutid, IntentPresenter intentPresenter, Context context, List<String> horizontalList)
+    public CustomAdapter(int layoutid, IntentPresenter intentPresenter, Context context)
     {
         //this.list = horizontalList;
         this.layoutid = layoutid;

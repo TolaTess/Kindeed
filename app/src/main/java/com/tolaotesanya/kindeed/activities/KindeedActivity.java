@@ -10,6 +10,8 @@ import com.tolaotesanya.kindeed.coordinator.IntentPresenter;
 import com.tolaotesanya.kindeed.dependencies.DependencyRegistry;
 import com.tolaotesanya.kindeed.helper.BottomNavPresenter;
 import com.tolaotesanya.kindeed.helper.CustomAdapter;
+import com.tolaotesanya.kindeed.modellayer.database.AppDatabase;
+import com.tolaotesanya.kindeed.viewmodel.ProductViewModel;
 
 import java.util.ArrayList;
 
@@ -26,6 +28,7 @@ public class KindeedActivity extends AppCompatActivity {
     CustomAdapter adapter;
     LinearLayoutManager HorizontalLayout;
     private IntentPresenter intentPresenter;
+    private ProductViewModel productViewModel;
 
     private static final int ACTIVITY_NUM = 1;
 
@@ -40,7 +43,7 @@ public class KindeedActivity extends AppCompatActivity {
         RecyclerViewLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(RecyclerViewLayoutManager);
         // Adding items to RecyclerView.
-        AddItemsToRecyclerViewArrayList();
+        //AddItemsToRecyclerViewArrayList();
         DependencyRegistry.shared.inject(this);
         // with source list as a parameter
         int layoutid = R.layout.recycler_basket;
@@ -55,9 +58,11 @@ public class KindeedActivity extends AppCompatActivity {
 
     }
 
-    public void configureWith(IntentPresenter intentPresenter) {
+    public void configureWith(ProductViewModel productViewModel, IntentPresenter intentPresenter) {
+        this.productViewModel = productViewModel;
         this.intentPresenter = intentPresenter;
     }
+
 
     private void setupToolbar() {
         RelativeLayout mToolbar = findViewById(R.id.kindeed_toolbar);
