@@ -22,7 +22,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyView> {
     private IntentPresenter intentPresenter;
     private Context context;
 
-    public CustomAdapter(List<String> horizontalList, int layoutid, IntentPresenter intentPresenter, Context context)
+    public CustomAdapter(int layoutid, IntentPresenter intentPresenter, Context context, List<String> horizontalList)
     {
         this.list = horizontalList;
         this.layoutid = layoutid;

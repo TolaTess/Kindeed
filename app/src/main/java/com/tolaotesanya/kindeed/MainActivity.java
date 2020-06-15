@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.tolaotesanya.kindeed.activities.auth.AuthActivity;
@@ -17,7 +15,6 @@ import com.tolaotesanya.kindeed.helper.CustomAdapter;
 import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -54,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager recyclerViewLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(recyclerViewLayoutManager);
         int layoutid = R.layout.recycler_service;
-        CustomAdapter adapter = new CustomAdapter(source, layoutid, intentPresenter, this);
+        CustomAdapter adapter = new CustomAdapter(layoutid, intentPresenter, this, source);
         LinearLayoutManager HorizontalLayout = new LinearLayoutManager(MainActivity.this,
                 LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(HorizontalLayout);
@@ -66,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager recyclerViewLayoutManager  = new LinearLayoutManager(getApplicationContext());
         recyclerView2.setLayoutManager(recyclerViewLayoutManager);
         int layoutid = R.layout.recycler_items;
-        CustomAdapter adapter = new CustomAdapter(source2, layoutid, intentPresenter, this);
+        CustomAdapter adapter = new CustomAdapter(layoutid, intentPresenter, this, source2);
         LinearLayoutManager HorizontalLayout = new LinearLayoutManager(MainActivity.this,
                 LinearLayoutManager.HORIZONTAL, false);
         recyclerView2.setLayoutManager(HorizontalLayout);
@@ -107,9 +104,10 @@ public class MainActivity extends AppCompatActivity {
     public void AddItemsToRecyclerViewArrayList() {
         // Adding items to ArrayList
         source = new ArrayList<>();
-        source.add("Popular");
-        source.add("Food");
-        source.add("Help");
+        source.add("Non-Organic");
+        source.add("Organic");
+        source.add("All");
+        source.add("Food Donation");
 
         source2 = new ArrayList<>();
         source2.add("Banana");
@@ -117,9 +115,9 @@ public class MainActivity extends AppCompatActivity {
         source2.add("Milk");
 
         source3 = new ArrayList<>();
-        source3.add("Food Drive");
-        source3.add("Cleaning");
-        source3.add("Help");
+        source3.add("Donate Sandwish");
+        source3.add("Donate Drinks");
+        source3.add("Donate Sweets");
 
     }
 }

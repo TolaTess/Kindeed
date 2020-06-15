@@ -11,6 +11,7 @@ import com.auth0.android.result.Credentials;
 import com.tolaotesanya.kindeed.MainActivity;
 import com.tolaotesanya.kindeed.R;
 import com.tolaotesanya.kindeed.activities.ItemActivity;
+import com.tolaotesanya.kindeed.activities.ServiceActivity;
 import com.tolaotesanya.kindeed.activities.auth.AuthActivity;
 import com.tolaotesanya.kindeed.modellayer.enums.ActivityClassName;
 
@@ -24,6 +25,13 @@ public class IntentPresenter {
                 intent.putExtra("itemName", name);
                 context.startActivity(intent);
                 act.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                break;
+            case service:
+                Activity activity1 = (Activity) context;
+                Intent intentService = new Intent(context, ServiceActivity.class);
+                intentService.putExtra("serviceName", name);
+                context.startActivity(intentService);
+                activity1.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
         }
 

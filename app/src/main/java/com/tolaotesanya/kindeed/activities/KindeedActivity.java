@@ -15,7 +15,6 @@ import java.util.ArrayList;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -45,7 +44,7 @@ public class KindeedActivity extends AppCompatActivity {
         DependencyRegistry.shared.inject(this);
         // with source list as a parameter
         int layoutid = R.layout.recycler_basket;
-        adapter = new CustomAdapter(source, layoutid, intentPresenter, this);
+        adapter = new CustomAdapter(layoutid, intentPresenter, this, source);
         // Set Horizontal Layout Manager
         // for Recycler view
         HorizontalLayout = new LinearLayoutManager(KindeedActivity.this,
