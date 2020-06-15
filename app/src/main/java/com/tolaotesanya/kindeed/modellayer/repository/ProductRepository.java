@@ -21,7 +21,7 @@ public class ProductRepository {
         mProducts = mProductDao.getProductsbyCategory();
     }
 
-    LiveData<List<Product>> getmProducts() {
+    public LiveData<List<Product>> getmProducts() {
         return mProducts;
     }
 

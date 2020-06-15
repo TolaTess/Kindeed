@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.tolaotesanya.kindeed.R;
 import com.tolaotesanya.kindeed.coordinator.IntentPresenter;
 import com.tolaotesanya.kindeed.modellayer.enums.ActivityClassName;
+import com.tolaotesanya.kindeed.modellayer.model.Product;
 
 import java.util.List;
 
@@ -17,14 +18,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyView> {
 
-    private List<String> list;
+    //private List<String> list;
     private int layoutid;
     private IntentPresenter intentPresenter;
     private Context context;
+    private List<Product> mProduct;
 
     public CustomAdapter(int layoutid, IntentPresenter intentPresenter, Context context, List<String> horizontalList)
     {
-        this.list = horizontalList;
+        //this.list = horizontalList;
         this.layoutid = layoutid;
         this.intentPresenter = intentPresenter;
         this.context = context;
@@ -38,39 +40,49 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyView> {
                 .inflate(layoutid,
                         parent,
                         false);
-
-        // return itemView
         return new MyView(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyView holder, int position) {
-        final String itemName = list.get(position);
-        holder.textView.setText(itemName);
+        if(mProduct != null){
+        //final String itemName = list.get(position);
+            Product current = mProduct.get(position);
+        holder.textView.setText(current.getItemName());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(layoutid == R.layout.recycler_service) {
-                    intentPresenter.presentIntent(context, ActivityClassName.service, itemName);
+                    intentPresenter.presentIntent(context, ActivityClassName.service, current.getItemName());
                 } else{
-                    intentPresenter.presentIntent(context, ActivityClassName.item, itemName);
+                    intentPresenter.presentIntent(context, ActivityClassName.item, current.getItemName());
                 }
             }
-        });
+        });} else {
+            holder.textView.setText("No Products");
+        }
     }
+
+    public void setmProduct(List<Product> products){
+        mProduct = products;
+        notifyDataSetChanged();
+    }
+
 
     @Override
     public int getItemCount() {
-        return list.size();
+        if(mProduct != null){
+            return mProduct.size();
+        } else return 0;
     }
 
 
-    public class MyView extends RecyclerView.ViewHolder{
+    class MyView extends RecyclerView.ViewHolder{
 
         TextView textView;
 
-        public MyView(@NonNull View itemView) {
+        MyView(@NonNull View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.sample_text);
         }
