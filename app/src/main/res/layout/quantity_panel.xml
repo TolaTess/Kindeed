@@ -20,9 +20,9 @@
             card_view:cardCornerRadius="10dp">
 
             <ImageView
-                android:id="@+id/quanity_minus"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:id="@+id/quanity_minus"
                 android:padding="7dp"
                 android:src="@drawable/minus" />
         </androidx.cardview.widget.CardView>
@@ -49,9 +49,9 @@
             card_view:cardCornerRadius="10dp">
 
             <ImageView
-                android:id="@+id/quanity_plus"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:id="@+id/quanity_plus"
                 android:padding="7dp"
                 android:src="@drawable/plus" />
 

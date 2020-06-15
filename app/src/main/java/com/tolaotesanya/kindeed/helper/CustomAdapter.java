@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tolaotesanya.kindeed.R;
@@ -65,7 +66,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyView> {
                 holder.itemDescView.setText(description);
             }
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(layoutid == R.layout.recycler_service) {
@@ -108,12 +109,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyView> {
         TextView itemNameView;
         TextView itemDescView;
         TextView itemPriceView;
+        ImageView itemImageView;
 
         MyView(@NonNull View itemView) {
             super(itemView);
             itemNameView = itemView.findViewById(R.id.sample_text);
             itemDescView = itemView.findViewById(R.id.sample_desc);
             itemPriceView = itemView.findViewById(R.id.sample_price);
+            itemImageView = itemView.findViewById(R.id.image_item);
         }
     }
 
