@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="5dp">
+        android:padding="5dp">
 
 
         <androidx.cardview.widget.CardView
@@ -21,8 +21,8 @@
 
             <ImageView
                 android:id="@+id/quanity_minus"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:padding="7dp"
                 android:src="@drawable/minus" />
         </androidx.cardview.widget.CardView>
@@ -33,10 +33,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/abhaya_libre"
-            android:gravity="center"
-            android:padding="15dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginEnd="7dp"
+            android:layout_marginTop="5dp"
             android:text="@string/quantity_sample"
-            android:textAlignment="center"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp" />
 
@@ -50,8 +50,8 @@
 
             <ImageView
                 android:id="@+id/quanity_plus"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:padding="7dp"
                 android:src="@drawable/plus" />
 
