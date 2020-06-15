@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/title_toolbar"
         android:fontFamily="@font/abhaya_libre"
+        android:layout_marginTop="10dp"
         android:text="Sharing is caring"
         android:textColor="@color/colorBlack"
         android:textSize="20sp" />

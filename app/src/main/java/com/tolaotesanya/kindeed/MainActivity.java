@@ -41,55 +41,19 @@ public class MainActivity extends AppCompatActivity {
         AddItemsToRecyclerViewArrayList();
         DependencyRegistry.shared.inject(this);
 
-        attachRecyclerUI();
+        addRec1();
+        addRec2();
 
-    }
-
-    private void attachRecyclerUI() {
-        CardView popular = findViewById(R.id.popular);
-        CardView food = findViewById(R.id.food);
-        CardView help = findViewById(R.id.help);
-
-        TextView popularText = popular.findViewById(R.id.title_subheading);
-        TextView foodText = food.findViewById(R.id.title_subheading);
-        TextView helpText = help.findViewById(R.id.title_subheading);
-
-        popularText.setText("Popular");
-        foodText.setText("Food");
-        helpText.setText("Help");
-
-        checkSource("popular");
-
-        popular.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkSource("popular");
-            }
-        });
-
-        food.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkSource("food");
-            }
-        });
-
-        help.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkSource("help");
-            }
-        });
     }
 
     public void configureWith(IntentPresenter intentPresenter) {
         this.intentPresenter = intentPresenter;
     }
 
-    public void addRec1(ArrayList<String> source){
+    public void addRec1(){
         RecyclerView.LayoutManager recyclerViewLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(recyclerViewLayoutManager);
-        int layoutid = R.layout.recycler_items;
+        int layoutid = R.layout.recycler_service;
         CustomAdapter adapter = new CustomAdapter(source, layoutid, intentPresenter, this);
         LinearLayoutManager HorizontalLayout = new LinearLayoutManager(MainActivity.this,
                 LinearLayoutManager.HORIZONTAL, false);
@@ -97,10 +61,11 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-    public void addRec2(ArrayList<String> source2){
+    public void addRec2(){
+
         RecyclerView.LayoutManager recyclerViewLayoutManager  = new LinearLayoutManager(getApplicationContext());
         recyclerView2.setLayoutManager(recyclerViewLayoutManager);
-        int layoutid = R.layout.recycler_service;
+        int layoutid = R.layout.recycler_items;
         CustomAdapter adapter = new CustomAdapter(source2, layoutid, intentPresenter, this);
         LinearLayoutManager HorizontalLayout = new LinearLayoutManager(MainActivity.this,
                 LinearLayoutManager.HORIZONTAL, false);
@@ -142,14 +107,14 @@ public class MainActivity extends AppCompatActivity {
     public void AddItemsToRecyclerViewArrayList() {
         // Adding items to ArrayList
         source = new ArrayList<>();
-        source.add("Banana");
+        source.add("Popular");
+        source.add("Food");
         source.add("Help");
-        source.add("Milk");
 
         source2 = new ArrayList<>();
-        source2.add("Fish");
+        source2.add("Banana");
         source2.add("Chocolate");
-        source2.add("Rice");
+        source2.add("Milk");
 
         source3 = new ArrayList<>();
         source3.add("Food Drive");
@@ -157,23 +122,4 @@ public class MainActivity extends AppCompatActivity {
         source3.add("Help");
 
     }
-
-    public void checkSource(String textView){
-        switch (textView){
-            case "popular":
-                addRec1(source);
-                addRec2(source);
-                break;
-            case "food":
-                addRec1(source2);
-                addRec2(source2);
-                break;
-            case "help":
-                addRec1(source3);
-                addRec2(source3);
-                break;
-        }
-    }
-
-
 }
