@@ -13,6 +13,7 @@ public class Product {
 
     @PrimaryKey
     @NonNull
+    @ColumnInfo
     private String itemId;
     @ColumnInfo
     private String itemName;
