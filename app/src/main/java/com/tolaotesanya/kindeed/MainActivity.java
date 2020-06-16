@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private static final int ACTIVITY_NUM = 0 ;
     public static final int NEW_PRODUCT_ACTIVITY_REQUEST_CODE = 1;
     RecyclerView recyclerView, recyclerView2;
-    //ArrayList<String> source, source2, source3;
     private IntentPresenter intentPresenter;
     private ProductViewModel productViewModel;
     private CustomAdapter adapter;
@@ -157,25 +156,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
-   /* // Function to add items in RecyclerView.
-    public void AddItemsToRecyclerViewArrayList() {
-        // Adding items to ArrayList
-        source = new ArrayList<>();
-        source.add("Non-Organic");
-        source.add("Organic");
-        source.add("All");
-        source.add("Food Donation");
-
-        source2 = new ArrayList<>();
-        source2.add("Banana");
-        source2.add("Chocolate");
-        source2.add("Milk");
-
-        source3 = new ArrayList<>();
-        source3.add("Donate Sandwish");
-        source3.add("Donate Drinks");
-        source3.add("Donate Sweets");
-
-    }*/
 }
