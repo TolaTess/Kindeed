@@ -10,28 +10,28 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tolaotesanya.kindeed.R;
-import com.tolaotesanya.kindeed.activities.ServiceActivity;
+import com.tolaotesanya.kindeed.activities.ItemActivity;
 import com.tolaotesanya.kindeed.coordinator.IntentPresenter;
+import com.tolaotesanya.kindeed.modellayer.model.Product;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class CategoryCustomAdapter extends RecyclerView.Adapter<CategoryCustomAdapter.MyView> {
+public class ServiceCustomAdapter extends RecyclerView.Adapter<ServiceCustomAdapter.MyView> {
 
     private IntentPresenter intentPresenter;
     private Context context;
-    private List<String> mCategory;
+    private List<Product> mProduct;
     private Activity activity;
+    private String category;
 
-    public CategoryCustomAdapter(IntentPresenter intentPresenter, Context context) {
+    public ServiceCustomAdapter(String category, IntentPresenter intentPresenter, Context context) {
+        this.category = category;
         this.intentPresenter = intentPresenter;
         this.context = context;
         activity = (Activity) context;
-        mCategory = new ArrayList<>();
-        setmCategoryProduct();
     }
 
     @NonNull
@@ -39,7 +39,7 @@ public class CategoryCustomAdapter extends RecyclerView.Adapter<CategoryCustomAd
     public MyView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.recycler_service,
+                .inflate(R.layout.recycler_items,
                         parent,
                         false);
         return new MyView(itemView);
@@ -47,37 +47,43 @@ public class CategoryCustomAdapter extends RecyclerView.Adapter<CategoryCustomAd
 
     @Override
     public void onBindViewHolder(@NonNull MyView holder, int position) {
-        if (mCategory != null) {
-            String current = mCategory.get(position);
-            holder.itemNameView.setText(current);
+        if (mProduct != null) {
+            Product current = mProduct.get(position);
+            String itemName = current.getItemName();
+            double price = current.getPrice();
+            String newPrice = String.valueOf(price);
+            String description = current.getDescription();
+            holder.itemNameView.setText(itemName);
+            holder.itemPriceView.setText(newPrice + " EUR");
+            holder.itemDescView.setText(description);
+
             holder.itemImageView.setOnClickListener(new View.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(View v) {
-                                                            //intentPresenter.presentIntent(context, ActivityClassName.service, category);
-                                                            Intent intent = new Intent(context, ServiceActivity.class);
-                                                            intent.putExtra("category", current);
-                                                            context.startActivity(intent);
-                                                            activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                                                        }
-                                                    }
-            );
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(context, ItemActivity.class);
+                    intent.putExtra("itemName", itemName);
+                    intent.putExtra("desc", description);
+                    intent.putExtra("price", newPrice);
+                    context.startActivity(intent);
+                    activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                }
+            });
         } else {
-            holder.itemNameView.setText("No Products");
+            holder.itemNameView.setText("No product");
         }
     }
 
-    public void setmCategoryProduct() {
-        List<String> mFinalProductList = new ArrayList<>();
-        mFinalProductList.add("Organic");
-        mFinalProductList.add("Non-Organic");
-        mFinalProductList.add("Donate");
-        mCategory = mFinalProductList;
+    public void setmProduct(List<Product> products) {
+        mProduct = products;
+        notifyDataSetChanged();
     }
+
 
     @Override
     public int getItemCount() {
-        if (mCategory != null) {
-            return mCategory.size();
+        if (mProduct != null) {
+            return mProduct.size();
         } else return 0;
     }
 

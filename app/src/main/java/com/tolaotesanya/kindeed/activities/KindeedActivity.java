@@ -10,7 +10,6 @@ import com.tolaotesanya.kindeed.coordinator.IntentPresenter;
 import com.tolaotesanya.kindeed.dependencies.DependencyRegistry;
 import com.tolaotesanya.kindeed.helper.BottomNavPresenter;
 import com.tolaotesanya.kindeed.helper.CustomAdapter;
-import com.tolaotesanya.kindeed.modellayer.database.AppDatabase;
 import com.tolaotesanya.kindeed.viewmodel.ProductViewModel;
 
 import java.util.ArrayList;
@@ -47,7 +46,7 @@ public class KindeedActivity extends AppCompatActivity {
         DependencyRegistry.shared.inject(this);
         // with source list as a parameter
         int layoutid = R.layout.recycler_basket;
-        adapter = new CustomAdapter(layoutid, intentPresenter, this);
+        adapter = new CustomAdapter(intentPresenter, this);
         // Set Horizontal Layout Manager
         // for Recycler view
         HorizontalLayout = new LinearLayoutManager(KindeedActivity.this,
