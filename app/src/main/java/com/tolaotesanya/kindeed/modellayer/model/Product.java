@@ -1,8 +1,10 @@
 package com.tolaotesanya.kindeed.modellayer.model;
 
+import java.util.Objects;
 import java.util.UUID;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -90,4 +92,47 @@ public class Product {
     public void setImage(String image) {
         this.image = image;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "itemId='" + itemId + '\'' +
+                ", itemName='" + itemName + '\'' +
+                ", description='" + description + '\'' +
+                ", category='" + category + '\'' +
+                ", price=" + price +
+                ", image='" + image + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Double.compare(product.getPrice(), getPrice()) == 0 &&
+                getItemId().equals(product.getItemId()) &&
+                getItemName().equals(product.getItemName()) &&
+                getDescription().equals(product.getDescription()) &&
+                getCategory().equals(product.getCategory()) &&
+                getImage().equals(product.getImage());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getItemId(), getItemName(), getDescription(), getCategory(), getPrice(), getImage());
+    }
+
+    //checks to make sure items do not equal each other
+    public static DiffUtil.ItemCallback<Product> itemCallback = new DiffUtil.ItemCallback<Product>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull Product oldItem, @NonNull Product newItem) {
+            return oldItem.getItemId().equals(newItem.getItemId());
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull Product oldItem, @NonNull Product newItem) {
+            return oldItem.equals(newItem);
+        }
+    };
 }
