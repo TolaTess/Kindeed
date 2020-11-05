@@ -65,8 +65,6 @@
             android:id="@+id/addtocart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/image_item"
-            android:layout_alignParentEnd="true"
             card_view:cardBackgroundColor="@color/colorAccent2"
             card_view:cardCornerRadius="10dp"
             android:layout_gravity="center"

@@ -24,8 +24,7 @@ import com.tolaotesanya.kindeed.modellayer.model.Product;
 public class KindeedFragment extends Fragment implements ShopAdapter.MainInterface {
 
     FragmentKindeedBinding fragmentMainBinding;
-    private CategoryCustomAdapter adapter;
-    private IntentPresenter presenter;
+    private ShopAdapter adapter;
 
     public KindeedFragment() {
         // Required empty public constructor
@@ -34,7 +33,6 @@ public class KindeedFragment extends Fragment implements ShopAdapter.MainInterfa
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         fragmentMainBinding = FragmentKindeedBinding.inflate(inflater, container, false);
         return fragmentMainBinding.getRoot();
     }
@@ -43,8 +41,7 @@ public class KindeedFragment extends Fragment implements ShopAdapter.MainInterfa
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        adapter = new CategoryCustomAdapter(presenter, getContext());
-        fragmentMainBinding.donatePager.setAdapter(adapter);
+        adapter = new ShopAdapter();
         fragmentMainBinding.shareFoodPager.setAdapter(adapter);
 
     }

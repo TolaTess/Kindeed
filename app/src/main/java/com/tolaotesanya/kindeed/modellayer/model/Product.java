@@ -118,11 +118,6 @@ public class Product {
                 getImage().equals(product.getImage());
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getItemId(), getItemName(), getDescription(), getCategory(), getPrice(), getImage());
-    }
-
     //checks to make sure items do not equal each other
     public static DiffUtil.ItemCallback<Product> itemCallback = new DiffUtil.ItemCallback<Product>() {
         @Override

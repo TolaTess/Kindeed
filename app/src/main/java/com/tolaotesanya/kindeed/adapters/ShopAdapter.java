@@ -6,15 +6,14 @@ import com.tolaotesanya.kindeed.databinding.RecyclerServiceBinding;
 import com.tolaotesanya.kindeed.modellayer.model.Product;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ShopAdapter extends ListAdapter<Product, ShopAdapter.ViewHolder> {
 
 
-    protected ShopAdapter(@NonNull DiffUtil.ItemCallback<Product> diffCallback) {
-        super(diffCallback);
+    public ShopAdapter() {
+        super(Product.itemCallback);
     }
 
     @NonNull
@@ -22,19 +21,15 @@ public class ShopAdapter extends ListAdapter<Product, ShopAdapter.ViewHolder> {
     public ShopAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         RecyclerServiceBinding recyclerItemsBinding = RecyclerServiceBinding.inflate(layoutInflater, parent, false);
-
         return new ViewHolder(recyclerItemsBinding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ShopAdapter.ViewHolder holder, int position) {
-        //Product product = getItem(position);
+        Product product = getItem(position);
+        holder.recyclerItemsBinding.setProduct(product);
     }
 
-    @Override
-    public int getItemCount() {
-        return 0;
-    }
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
