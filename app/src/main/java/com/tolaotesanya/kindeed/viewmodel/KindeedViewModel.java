@@ -6,14 +6,24 @@ import com.tolaotesanya.kindeed.repositories.KindeedRepository;
 import java.util.List;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class KindeedViewModel extends ViewModel {
 
     KindeedRepository repository = new KindeedRepository();
+    MutableLiveData<Product> mutableProduct = new MutableLiveData<>();
 
     public LiveData<List<Product>> getProducts(){
         return repository.getProducts();
+    }
+
+    public void setProduct(Product product) {
+        mutableProduct.setValue(product);
+    }
+
+    public LiveData<Product> getProduct() {
+        return mutableProduct;
     }
 
 }
