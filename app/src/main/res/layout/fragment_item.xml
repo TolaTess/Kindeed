@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+        name="kindeedViewModel"
+        type="com.tolaotesanya.kindeed.viewmodel.KindeedViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.fragment.ItemFragment">
+
+        <include
+            layout="@layout/item_bar_layout"
+            android:id="@+id/item_toolbar" />
+
+        <RelativeLayout
+            android:id="@+id/rel1"
+            android:layout_below="@id/item_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+
+            <ImageView
+                android:id="@+id/item_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/kindeed_logo" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/item_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/abhaya_libre"
+            android:gravity="center"
+            android:text="@{String.valueOf(kindeedViewModel.product.price) + `EUR `}"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlack"
+            android:textSize="22sp" />
+
+        <include
+            android:id="@+id/quanity"
+            layout="@layout/quantity_panel"
+            android:layout_below="@+id/item_price"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true" />
+
+        <include
+            android:id="@+id/basket"
+            layout="@layout/addtobasket_layout"
+            android:layout_below="@+id/quanity"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+</layout>

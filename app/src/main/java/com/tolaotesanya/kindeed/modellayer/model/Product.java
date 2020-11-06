@@ -1,9 +1,14 @@
 package com.tolaotesanya.kindeed.modellayer.model;
 
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
+
 import java.util.Objects;
 import java.util.UUID;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -25,6 +30,7 @@ public class Product {
     private String category;
     @ColumnInfo
     private double price;
+    private int quantity;
     @ColumnInfo
     private String image;
 
@@ -32,7 +38,8 @@ public class Product {
     }
 
     @Ignore
-    public Product(String itemId, String itemName, String description, String catergory, double price, String image) {
+    public Product(String itemId, String itemName, String description, String catergory, double price, int quantity, String image) {
+        this.quantity = quantity;
         if(itemId == null){
             itemId = UUID.randomUUID().toString();
         }
@@ -93,6 +100,14 @@ public class Product {
         this.image = image;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -101,6 +116,7 @@ public class Product {
                 ", description='" + description + '\'' +
                 ", category='" + category + '\'' +
                 ", price=" + price +
+                ", quantity=" + quantity +
                 ", image='" + image + '\'' +
                 '}';
     }
@@ -111,6 +127,7 @@ public class Product {
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
         return Double.compare(product.getPrice(), getPrice()) == 0 &&
+                getQuantity() == product.getQuantity() &&
                 getItemId().equals(product.getItemId()) &&
                 getItemName().equals(product.getItemName()) &&
                 getDescription().equals(product.getDescription()) &&
@@ -130,4 +147,12 @@ public class Product {
             return oldItem.equals(newItem);
         }
     };
+
+    @BindingAdapter("android:productImage")
+    public static void loadImage(ImageView imageView, String image){
+        Glide.with(imageView)
+                .load(image)
+                .fitCenter()
+                .into(imageView);
+    }
 }
