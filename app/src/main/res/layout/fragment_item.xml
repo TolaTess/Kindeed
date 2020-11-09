@@ -6,20 +6,36 @@
         <variable
         name="kindeedViewModel"
         type="com.tolaotesanya.kindeed.viewmodel.KindeedViewModel"/>
+        <variable
+            name="mainInterface"
+            type="com.tolaotesanya.kindeed.adapters.ShopAdapter.MainInterface" />
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
         tools:context=".views.fragment.ItemFragment">
 
-        <include
-            layout="@layout/item_bar_layout"
-            android:id="@+id/item_toolbar" />
+<!--        <include-->
+<!--            layout="@layout/item_bar_layout"-->
+<!--            android:id="@+id/item_toolbar" />-->
+
+        <TextView
+            android:id="@+id/item_title_toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/amarante"
+            android:layout_marginTop="15dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:text="@{kindeedViewModel.product.itemName}"
+            android:layout_centerHorizontal="true"
+            android:textSize="30sp" />
 
         <RelativeLayout
             android:id="@+id/rel1"
-            android:layout_below="@id/item_toolbar"
+            android:layout_below="@id/item_title_toolbar"
             android:layout_width="match_parent"
             android:layout_height="300dp">
 
@@ -27,7 +43,8 @@
                 android:id="@+id/item_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/kindeed_logo" />
+                android:src="@drawable/kindeed_logo"
+                android:productImage="@{kindeedViewModel.product.image}"/>
 
         </RelativeLayout>
 
@@ -41,8 +58,8 @@
             android:fontFamily="@font/abhaya_libre"
             android:gravity="center"
             android:text="@{String.valueOf(kindeedViewModel.product.price) + `EUR `}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
             android:textAlignment="center"
-            android:textColor="@color/colorBlack"
             android:textSize="22sp" />
 
         <include
@@ -54,14 +71,27 @@
             android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true" />
 
-        <include
+        <Button
             android:id="@+id/basket"
-            layout="@layout/addtobasket_layout"
-            android:layout_below="@+id/quanity"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_marginTop="50dp"
-            android:layout_centerHorizontal="true" />
+            android:layout_height="wrap_content"
+            android:text="@string/add_to_cart"
+            android:layout_centerHorizontal="true"
+            android:enabled="true"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/quanity"
+            android:onClick="@{() -> mainInterface.addItem(kindeedViewModel.product)}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+<!--        <include-->
+<!--            android:id="@+id/basket"-->
+<!--            layout="@layout/addtobasket_layout"-->
+<!--            android:layout_below="@+id/quanity"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_marginTop="50dp"-->
+<!--            android:layout_centerHorizontal="true" />-->
 
     </RelativeLayout>
 </layout>

@@ -3,7 +3,7 @@ package com.tolaotesanya.kindeed.viewmodel;
 import android.app.Application;
 
 import com.tolaotesanya.kindeed.modellayer.model.Product;
-import com.tolaotesanya.kindeed.modellayer.repository.ProductRepository;
+import com.tolaotesanya.kindeed.repositories.ProductRepository;
 
 import java.util.List;
 

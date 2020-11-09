@@ -1,4 +1,4 @@
-package com.tolaotesanya.kindeed.modellayer.repository;
+package com.tolaotesanya.kindeed.repositories;
 
 import android.app.Application;
 

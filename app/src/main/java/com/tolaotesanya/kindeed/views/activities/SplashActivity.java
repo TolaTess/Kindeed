@@ -1,4 +1,4 @@
-package com.tolaotesanya.kindeed;
+package com.tolaotesanya.kindeed.views.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
-import com.tolaotesanya.kindeed.activities.auth.AuthActivity;
+import com.tolaotesanya.kindeed.R;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -34,7 +34,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent splashIntent = new Intent(SplashActivity.this, AuthActivity.class);
+                Intent splashIntent = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(splashIntent);
             }
         }, SPLASH_SCREEN);

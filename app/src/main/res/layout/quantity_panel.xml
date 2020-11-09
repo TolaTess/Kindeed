@@ -24,7 +24,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                card_view:cardBackgroundColor="@color/colorAccent2"
+                card_view:cardBackgroundColor="@color/colorAccent"
                 card_view:cardCornerRadius="10dp">
 
                 <ImageView
@@ -48,11 +48,14 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp" />
 
+<!--            set color using data binding
+@{kindeedviewmodel.product.varName ? @color/colorP : @color/red}"
+-->
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                card_view:cardBackgroundColor="@color/colorAccent2"
+                card_view:cardBackgroundColor="@color/colorAccent"
                 card_view:cardCornerRadius="10dp">
 
                 <ImageView

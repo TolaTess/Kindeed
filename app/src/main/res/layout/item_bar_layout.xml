@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
             name="kindeedViewModel"
             type="com.tolaotesanya.kindeed.viewmodel.KindeedViewModel"/>
+        <variable
+            name="mainInterface"
+            type="com.tolaotesanya.kindeed.adapters.ShopAdapter.MainInterface" />
     </data>
 
     <RelativeLayout
@@ -19,30 +23,38 @@
             android:layout_height="40dp"
             android:id="@+id/item_image_toolbar"
             android:src="@drawable/arrow_left_07"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="7dp"
             android:padding="3dp" />
-
-        <TextView
-            android:id="@+id/item_title_toolbar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:fontFamily="@font/amarante"
-            android:text="@{kindeedViewModel.product.itemName}"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/colorBlack"
-            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/item_desc_toolbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/item_title_toolbar"
+            android:layout_below="@+id/item_image_toolbar"
             android:fontFamily="@font/abhaya_libre"
             android:layout_centerHorizontal="true"
             android:text="@string/slogan"
-            android:textColor="@color/colorGrey"
             android:textSize="25sp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/addtocart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            card_view:cardBackgroundColor="@color/colorAccent"
+            card_view:cardCornerRadius="10dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:onClick="@{() -> mainInterface.addItem(kindeedViewModel.product)}">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="7dp"
+                android:src="@drawable/cart"/>
+
+        </androidx.cardview.widget.CardView>
 
     </RelativeLayout>
 </layout>

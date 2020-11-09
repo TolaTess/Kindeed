@@ -16,7 +16,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        card_view:cardBackgroundColor="@color/colorAccent"
         card_view:cardCornerRadius="10dp"
         card_view:cardElevation="1dp"
         card_view:contentPadding="1dp"
@@ -42,7 +41,6 @@
                 android:fontFamily="@font/archivo_black"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                 android:text="@{product.itemName}"
-                android:textColor="@color/colorWhite"
                 android:layout_gravity="center"
                 android:maxWidth="200dp"
                 android:textSize="18sp" />
@@ -54,7 +52,6 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/abhaya_libre"
                     android:text="@{product.description}"
-                    android:textColor="@color/colorWhite"
                     android:layout_gravity="center"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
                     android:textSize="16sp" />
@@ -65,38 +62,37 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/amarante"
                     android:text="@{String.valueOf(product.price) + `EUR`}"
-                    android:textColor="@color/colorWhite"
                     android:layout_gravity="center"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
                     android:textSize="16sp" />
 
-<!--        <Button-->
-<!--            android:id="@+id/addtocartbtn"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Add to cart"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:onClick="@{() -> mainInterface.addItem(product)}"-->
-<!--            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"-->
-<!--            style="@style/Widget.MaterialComponents.Button.TextButton"/>-->
-
-        <androidx.cardview.widget.CardView
+        <Button
             android:id="@+id/addtocart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            card_view:cardBackgroundColor="@color/colorAccent2"
-            card_view:cardCornerRadius="10dp"
+            android:text="Add to cart"
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:onClick="@{() -> mainInterface.addItem(product)}">
+            android:onClick="@{() -> mainInterface.addItem(product)}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            style="@style/Widget.MaterialComponents.Button.TextButton"/>
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:padding="7dp"
-                android:src="@drawable/cart"/>
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:id="@+id/addtocart"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            card_view:cardBackgroundColor="@color/colorAccent2"-->
+<!--            card_view:cardCornerRadius="10dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:onClick="@{() -> mainInterface.addItem(product)}">-->
 
-        </androidx.cardview.widget.CardView>
+<!--            <ImageView-->
+<!--                android:layout_width="40dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:padding="7dp"-->
+<!--                android:src="@drawable/cart"/>-->
+
+<!--        </androidx.cardview.widget.CardView>-->
 
 
     </LinearLayout>

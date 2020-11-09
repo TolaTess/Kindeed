@@ -11,9 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class ShopAdapter extends ListAdapter<Product, ShopAdapter.ViewHolder> {
 
-
-    public ShopAdapter() {
+    private MainInterface mainInterface;
+    public ShopAdapter(MainInterface mainInterface) {
         super(Product.itemCallback);
+        this.mainInterface = mainInterface;
     }
 
     @NonNull
@@ -21,6 +22,7 @@ public class ShopAdapter extends ListAdapter<Product, ShopAdapter.ViewHolder> {
     public ShopAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         RecyclerServiceBinding recyclerItemsBinding = RecyclerServiceBinding.inflate(layoutInflater, parent, false);
+        recyclerItemsBinding.setMainInterface(mainInterface);
         return new ViewHolder(recyclerItemsBinding);
     }
 
@@ -28,6 +30,7 @@ public class ShopAdapter extends ListAdapter<Product, ShopAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ShopAdapter.ViewHolder holder, int position) {
         Product product = getItem(position);
         holder.recyclerItemsBinding.setProduct(product);
+        holder.recyclerItemsBinding.executePendingBindings();
     }
 
 

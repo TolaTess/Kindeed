@@ -21,6 +21,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.DividerItemDecoration;
 
 public class KindeedFragment extends Fragment implements ShopAdapter.MainInterface {
 
@@ -46,6 +47,8 @@ public class KindeedFragment extends Fragment implements ShopAdapter.MainInterfa
 
         adapter = new ShopAdapter(this);
         fragmentKindeedBinding.shareFoodPager.setAdapter(adapter);
+        fragmentKindeedBinding.shareFoodPager.addItemDecoration(new DividerItemDecoration(requireContext(),
+                DividerItemDecoration.HORIZONTAL));
         viewModel = new ViewModelProvider(requireActivity()).get(KindeedViewModel.class);
         viewModel.getProducts().observe(getViewLifecycleOwner(), new Observer<List<Product>>() {
             @Override

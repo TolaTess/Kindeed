@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    tools:context=".views.fragment.KindeedFragment">
+
+<!--    <include-->
+<!--        android:id="@+id/kindeed_toolbar"-->
+<!--        layout="@layout/app_bar_layout" />-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/share_food_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:scrollbars="vertical"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:listitem="@layout/recycler_service" />
+
+
+</LinearLayout>
