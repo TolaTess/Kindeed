@@ -57,6 +57,14 @@ public class CartFragment extends Fragment implements CartAdapter.CartInterface 
             }
         });
 
+        viewModel.getTotalPrice().observe(getViewLifecycleOwner(), new Observer<Double>() {
+            @Override
+            public void onChanged(Double aDouble) {
+                fragmentCartBinding.orderTotalText.setText("Total: " + aDouble.toString() + " EUR");
+
+            }
+        });
+
     }
 
     @Override

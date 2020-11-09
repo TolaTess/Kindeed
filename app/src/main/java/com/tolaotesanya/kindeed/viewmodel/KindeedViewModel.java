@@ -45,4 +45,8 @@ public class KindeedViewModel extends ViewModel {
         cartRepository.changeQuantity(cartItem, quantity);
     }
 
+    public LiveData<Double> getTotalPrice(){
+        return cartRepository.getTotalPrice();
+    }
+
 }
