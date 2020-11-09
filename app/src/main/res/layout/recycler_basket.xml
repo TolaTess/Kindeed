@@ -16,44 +16,55 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/image_item"
+            android:id="@+id/cart_item_image"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginStart="20dp"
             android:src="@drawable/kindeed_logo"/>
 
         <TextView
-            android:id="@+id/sample_text"
+            android:id="@+id/cart_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textAlignment="center"
             android:fontFamily="@font/amarante"
             android:text="@string/sample_product_name"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:textSize="18sp" />
         <TextView
-            android:id="@+id/sample_price"
+            android:id="@+id/cart_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textAlignment="center"
-            android:layout_below="@+id/sample_text"
+            android:layout_below="@+id/cart_text"
             android:fontFamily="@font/abhaya_libre"
             android:text="@string/price_sample"
             android:layout_marginTop="1dp"
             android:textSize="16sp" />
+
         <TextView
-            android:id="@+id/sample_quantity"
+            android:id="@+id/cart_quantity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_below="@+id/sample_price"
+            android:layout_below="@+id/cart_price"
             android:textAlignment="center"
             android:fontFamily="@font/abhaya_libre"
             android:text="@string/quantity"
             android:layout_marginTop="1dp"
             android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/quantitySpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cart_quantity"
+            android:layout_centerHorizontal="true"
+            android:entries="@array/quantity_array"
+            android:setValue="@{cartItem.quantity}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"

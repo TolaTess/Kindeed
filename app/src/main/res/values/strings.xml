@@ -29,4 +29,13 @@
     <string name="quantity_sample">1</string>
     <string name="add_to_cart">Add to cart</string>
     <string name="place_order">Place Order</string>
+
+    <string-array name="quantity_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5(Max)</item>
+    </string-array>
+
 </resources>
