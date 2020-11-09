@@ -22,7 +22,8 @@
         card_view:contentPadding="1dp"
         android:orientation="vertical"
         android:background="?attr/selectableItemBackground"
-        android:onClick="@{() -> mainInterface.onItemClick(product)">
+        android:onClick="@{() -> mainInterface.onItemClick(product)}"
+        >
 
             <ImageView
                 android:layout_width="100dp"
@@ -31,7 +32,8 @@
                 android:layout_gravity="center"
                 android:scaleType="fitCenter"
                 android:src="@drawable/kindeed_logo"
-                android:productImage="@{product.image}"/>
+                android:productImage="@{product.image}"
+                />
 
             <TextView
                 android:id="@+id/p_text"
@@ -68,6 +70,16 @@
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
                     android:textSize="16sp" />
 
+<!--        <Button-->
+<!--            android:id="@+id/addtocartbtn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Add to cart"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:onClick="@{() -> mainInterface.addItem(product)}"-->
+<!--            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"-->
+<!--            style="@style/Widget.MaterialComponents.Button.TextButton"/>-->
+
         <androidx.cardview.widget.CardView
             android:id="@+id/addtocart"
             android:layout_width="wrap_content"
@@ -76,7 +88,7 @@
             card_view:cardCornerRadius="10dp"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
-            android:onClick="@{() -> mainInterface.addItem(product)">
+            android:onClick="@{() -> mainInterface.addItem(product)}">
 
             <ImageView
                 android:layout_width="40dp"

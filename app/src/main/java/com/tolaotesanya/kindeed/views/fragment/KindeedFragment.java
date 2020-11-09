@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.snackbar.Snackbar;
+import com.tolaotesanya.kindeed.R;
 import com.tolaotesanya.kindeed.adapters.ShopAdapter;
 import com.tolaotesanya.kindeed.databinding.FragmentKindeedBinding;
 import com.tolaotesanya.kindeed.modellayer.model.Product;
@@ -17,12 +19,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 public class KindeedFragment extends Fragment implements ShopAdapter.MainInterface {
 
     FragmentKindeedBinding fragmentKindeedBinding;
     private ShopAdapter adapter;
     private KindeedViewModel viewModel;
+    private NavController navController;
 
     public KindeedFragment() {
         // Required empty public constructor
@@ -49,15 +54,30 @@ public class KindeedFragment extends Fragment implements ShopAdapter.MainInterfa
             }
         });
 
+        navController = Navigation.findNavController(view);
     }
 
     @Override
     public void addItem(Product product) {
-
+        boolean isAdded = viewModel.addItemToCart(product);
+        if (isAdded) {
+            Snackbar.make(requireView(), product.getItemName() + " added to cart.", Snackbar.LENGTH_LONG)
+                    .setAction("Checkout", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            navController.navigate(R.id.action_kindeedFragment_to_cartFragment);
+                        }
+                    })
+                    .show();
+        } else {
+            Snackbar.make(requireView(), "Already have the max quantity in cart.", Snackbar.LENGTH_LONG)
+                    .show();
+        }
     }
 
     @Override
     public void onItemClick(Product product) {
-
+        viewModel.setProduct(product);
+        navController.navigate(R.id.action_kindeedFragment_to_itemFragment);
     }
 }
