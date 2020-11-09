@@ -1,12 +1,10 @@
 package com.tolaotesanya.kindeed.views.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.tolaotesanya.kindeed.R;
-import com.tolaotesanya.kindeed.views.activities.auth.AuthActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -24,12 +22,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         navController = Navigation.findNavController(this, R.id.fragment_main);
+        NavigationUI.setupActionBarWithNavController(this, navController);
 
     }
 
-
     @Override
     public boolean onSupportNavigateUp() {
+        // for back button
         navController.navigateUp();
         return super.onSupportNavigateUp();
     }
