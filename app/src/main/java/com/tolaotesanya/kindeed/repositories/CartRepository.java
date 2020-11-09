@@ -29,6 +29,22 @@ public class CartRepository {
             initCart();
         }
         List<CartItem> cartItemList = new ArrayList<>(mutableLiveCart.getValue());
+        //check if item already in the cart - merge
+        for(CartItem cartItem: cartItemList) {
+            if (cartItem.getProduct().getItemId().equals(product.getItemId())) {
+                // max 5
+                if (cartItem.getQuantity() == 5) {
+                    return false;
+                }
+                //update cart item
+                int index = cartItemList.indexOf(cartItem);
+                cartItem.setQuantity(cartItem.getQuantity() + 1);
+                cartItemList.set(index, cartItem);
+                mutableLiveCart.setValue(cartItemList);
+
+                return true;
+            }
+        }
         CartItem cartItem = new CartItem(product, 1);
         cartItemList.add(cartItem);
         mutableLiveCart.setValue(cartItemList);
