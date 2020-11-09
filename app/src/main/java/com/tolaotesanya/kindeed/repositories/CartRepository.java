@@ -50,4 +50,13 @@ public class CartRepository {
         mutableLiveCart.setValue(cartItemList);
         return true;
     }
+
+    public void removeItemFromCart(CartItem cartItem) {
+        if(mutableLiveCart.getValue() == null){
+            return;
+        }
+        List<CartItem> cartItemList = new ArrayList<>(mutableLiveCart.getValue());
+        cartItemList.remove(cartItem);
+        mutableLiveCart.setValue(cartItemList);
+    }
 }

@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         viewModel.getCart().observe(this, new Observer<List<CartItem>>() {
             @Override
             public void onChanged(List<CartItem> cartItems) {
-                Log.d(TAG, "*******" + cartItems.size());
+
             }
         });
     }

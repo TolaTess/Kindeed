@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +22,11 @@ import com.tolaotesanya.kindeed.viewmodel.KindeedViewModel;
 
 import java.util.List;
 
-public class CartFragment extends Fragment {
+public class CartFragment extends Fragment implements CartAdapter.CartInterface {
     private static final String TAG = "CartFragment";
 
     private FragmentCartBinding fragmentCartBinding;
+    private KindeedViewModel viewModel;
 
     public CartFragment() {
         // Required empty public constructor
@@ -42,18 +44,28 @@ public class CartFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        CartAdapter adapter = new CartAdapter();
+        CartAdapter adapter = new CartAdapter(this);
         fragmentCartBinding.cartRecyclerView.setAdapter(adapter);
         fragmentCartBinding.cartRecyclerView.addItemDecoration(new DividerItemDecoration(requireContext(),
                 DividerItemDecoration.VERTICAL));
 
-        KindeedViewModel viewModel = new ViewModelProvider(requireActivity()).get(KindeedViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(KindeedViewModel.class);
         viewModel.getCart().observe(getViewLifecycleOwner(), new Observer<List<CartItem>>() {
             @Override
             public void onChanged(List<CartItem> cartItems) {
                 adapter.submitList(cartItems);
             }
         });
+
+    }
+
+    @Override
+    public void deleteItem(CartItem cartItem) {
+        viewModel.removeItemFromCart(cartItem);
+    }
+
+    @Override
+    public void changeQuantity(CartItem cartItem, int quantity) {
 
     }
 }
