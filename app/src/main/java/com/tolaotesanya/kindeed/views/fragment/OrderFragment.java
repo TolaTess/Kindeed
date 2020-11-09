@@ -40,7 +40,7 @@ public class OrderFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         navController = Navigation.findNavController(view);
-        kindeedViewModel = new ViewModelProvider(requireActivity()).get(KindeedViewModel.class);       
+        kindeedViewModel = new ViewModelProvider(requireActivity()).get(KindeedViewModel.class);
         fragmentOrderBinding.continueShoppingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
