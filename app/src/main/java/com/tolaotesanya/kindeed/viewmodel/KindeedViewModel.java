@@ -49,4 +49,8 @@ public class KindeedViewModel extends ViewModel {
         return cartRepository.getTotalPrice();
     }
 
+    public void resetCart(){
+        cartRepository.initCart();
+    }
+
 }
