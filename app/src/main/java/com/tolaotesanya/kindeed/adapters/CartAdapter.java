@@ -8,15 +8,20 @@ import android.widget.AdapterView;
 import com.tolaotesanya.kindeed.databinding.RecyclerBasketBinding;
 import com.tolaotesanya.kindeed.modellayer.model.CartItem;
 
+import java.text.NumberFormat;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class CartAdapter extends ListAdapter<CartItem, CartAdapter.CartViewHolder> {
 
+private CartInterface cartInterface;
+    private int quantity = 0;
 
-    public CartAdapter() {
+    public CartAdapter(CartInterface cartInterface) {
         super(CartItem.itemCallback);
+        this.cartInterface = cartInterface;
     }
 
     @NonNull
@@ -46,7 +51,7 @@ public class CartAdapter extends ListAdapter<CartItem, CartAdapter.CartViewHolde
             recyclerBasketBinding.remove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //cartInterface.deleteItem(getItem(getBindingAdapterPosition()));
+                    cartInterface.deleteItem(getItem(getBindingAdapterPosition()));
                 }
             });
 
@@ -57,7 +62,7 @@ public class CartAdapter extends ListAdapter<CartItem, CartAdapter.CartViewHolde
                     if(quantity == getItem(getBindingAdapterPosition()).getQuantity()){
                         return;
                     }
-                    //cartInterface.changeQuantity(getItem(getBindingAdapterPosition()), quantity);
+                    cartInterface.changeQuantity(getItem(getBindingAdapterPosition()), quantity);
                 }
 
                 @Override

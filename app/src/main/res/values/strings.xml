@@ -29,6 +29,8 @@
     <string name="quantity_sample">1</string>
     <string name="add_to_cart">Add to cart</string>
     <string name="place_order">Place Order</string>
+    <string name="thanks_order">Thanks for your order.</string>
+    <string name="continue_shopping">Continue Shopping</string>
 
     <string-array name="quantity_array">
         <item>1</item>

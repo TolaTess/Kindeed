@@ -7,6 +7,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 
 import android.util.Log;
@@ -27,6 +29,7 @@ public class CartFragment extends Fragment implements CartAdapter.CartInterface 
 
     private FragmentCartBinding fragmentCartBinding;
     private KindeedViewModel viewModel;
+    private NavController navController;
 
     public CartFragment() {
         // Required empty public constructor
@@ -44,6 +47,7 @@ public class CartFragment extends Fragment implements CartAdapter.CartInterface 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        navController = Navigation.findNavController(view);
         CartAdapter adapter = new CartAdapter(this);
         fragmentCartBinding.cartRecyclerView.setAdapter(adapter);
         fragmentCartBinding.cartRecyclerView.addItemDecoration(new DividerItemDecoration(requireContext(),
@@ -54,6 +58,7 @@ public class CartFragment extends Fragment implements CartAdapter.CartInterface 
             @Override
             public void onChanged(List<CartItem> cartItems) {
                 adapter.submitList(cartItems);
+                fragmentCartBinding.placeOrderBtn.setEnabled(cartItems.size() > 0);
             }
         });
 
@@ -62,6 +67,13 @@ public class CartFragment extends Fragment implements CartAdapter.CartInterface 
             public void onChanged(Double aDouble) {
                 fragmentCartBinding.orderTotalText.setText("Total: " + aDouble.toString() + " EUR");
 
+            }
+        });
+
+        fragmentCartBinding.placeOrderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.action_cartFragment_to_orderFragment);
             }
         });
 
