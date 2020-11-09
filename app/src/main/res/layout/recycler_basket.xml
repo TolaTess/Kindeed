@@ -86,6 +86,7 @@
                 card_view:cardCornerRadius="10dp"
                 android:layout_alignParentEnd="true"
                 android:background="?android:attr/selectableItemBackground"
+
                 android:layout_marginEnd="20dp"
                 android:layout_marginTop="20dp"
                 card_view:cardBackgroundColor="@color/colorPrimary">

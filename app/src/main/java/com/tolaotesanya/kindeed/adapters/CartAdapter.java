@@ -14,11 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class CartAdapter extends ListAdapter<CartItem, CartAdapter.CartViewHolder> {
 
-    private CartInterface cartInterface;
 
-    public CartAdapter(CartInterface cartInterface) {
+    public CartAdapter() {
         super(CartItem.itemCallback);
-        this.cartInterface = cartInterface;
     }
 
     @NonNull
@@ -32,6 +30,7 @@ public class CartAdapter extends ListAdapter<CartItem, CartAdapter.CartViewHolde
     @Override
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
         holder.recyclerBasketBinding.setCartItem(getItem(position));
+        //executes pending bindings
         holder.recyclerBasketBinding.executePendingBindings();
     }
 
@@ -47,7 +46,7 @@ public class CartAdapter extends ListAdapter<CartItem, CartAdapter.CartViewHolde
             recyclerBasketBinding.remove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    cartInterface.deleteItem(getItem(getBindingAdapterPosition()));
+                    //cartInterface.deleteItem(getItem(getBindingAdapterPosition()));
                 }
             });
 
@@ -58,7 +57,7 @@ public class CartAdapter extends ListAdapter<CartItem, CartAdapter.CartViewHolde
                     if(quantity == getItem(getBindingAdapterPosition()).getQuantity()){
                         return;
                     }
-                    cartInterface.changeQuantity(getItem(getBindingAdapterPosition()), quantity);
+                    //cartInterface.changeQuantity(getItem(getBindingAdapterPosition()), quantity);
                 }
 
                 @Override

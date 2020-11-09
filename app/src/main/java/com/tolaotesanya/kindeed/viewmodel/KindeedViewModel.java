@@ -13,9 +13,9 @@ import androidx.lifecycle.ViewModel;
 
 public class KindeedViewModel extends ViewModel {
 
-    KindeedRepository repository = new KindeedRepository();
-    CartRepository cartRepository = new CartRepository();
-    MutableLiveData<Product> mutableProduct = new MutableLiveData<>();
+    private KindeedRepository repository = new KindeedRepository();
+    private CartRepository cartRepository = new CartRepository();
+    private MutableLiveData<Product> mutableProduct = new MutableLiveData<>();
 
     public LiveData<List<Product>> getProducts(){
         return repository.getProducts();

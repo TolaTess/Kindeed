@@ -1,6 +1,9 @@
 package com.tolaotesanya.kindeed.modellayer.model;
 
+import android.widget.ImageView;
 import android.widget.Spinner;
+
+import com.bumptech.glide.Glide;
 
 import java.util.Objects;
 
