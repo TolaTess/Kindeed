@@ -66,6 +66,6 @@ public class CartFragment extends Fragment implements CartAdapter.CartInterface 
 
     @Override
     public void changeQuantity(CartItem cartItem, int quantity) {
-
+        viewModel.changeQuantity(cartItem, quantity);
     }
 }

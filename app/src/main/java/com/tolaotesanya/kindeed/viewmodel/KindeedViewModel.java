@@ -41,4 +41,8 @@ public class KindeedViewModel extends ViewModel {
         cartRepository.removeItemFromCart(cartItem);
     }
 
+    public void changeQuantity(CartItem cartItem, int quantity){
+        cartRepository.changeQuantity(cartItem, quantity);
+    }
+
 }
