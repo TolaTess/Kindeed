@@ -27,4 +27,6 @@
     <string name="perfect_with">Perfect with</string>
     <string name="add_to_basket">Add to basket</string>
     <string name="quantity_sample">1</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="place_order">Place Order</string>
 </resources>
