@@ -51,19 +51,23 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/abhaya_libre"
             android:gravity="center"
-            android:text="@{String.valueOf(kindeedViewModel.product.price) + `EUR `}"
+            android:text="@{String.valueOf(kindeedViewModel.product.price) + `EUR`}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-            android:textAlignment="center"
-            android:textSize="22sp" />
+            android:textAlignment="center" />
 
-        <include
-            android:id="@+id/quanity"
-            layout="@layout/quantity_panel"
-            android:layout_below="@+id/item_price"
+        <TextView
+            android:id="@+id/item_desc"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true" />
+            android:layout_below="@+id/item_price"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/abhaya_libre"
+            android:gravity="center"
+            android:text="@{kindeedViewModel.product.description}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:textAlignment="center"
+            />
 
         <Button
             android:id="@+id/basket"
@@ -72,8 +76,8 @@
             android:text="@string/add_to_cart"
             android:layout_centerHorizontal="true"
             android:enabled="true"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/quanity"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/item_desc"
             android:onClick="@{() -> kindeedViewModel.addItemToCart(kindeedViewModel.product)}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>

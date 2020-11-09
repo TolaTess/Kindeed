@@ -12,7 +12,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="130dp"
         android:layout_margin="5dp"
         card_view:cardBackgroundColor="@color/colorAccent"
         card_view:cardCornerRadius="10dp"
@@ -71,13 +71,14 @@
 
             <Spinner
                 android:id="@+id/quantitySpinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_below="@+id/cart_quantity"
                 android:layout_centerHorizontal="true"
                 android:entries="@array/quantity_array"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
                 android:setValue="@{cartItem.quantity}"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/remove"
