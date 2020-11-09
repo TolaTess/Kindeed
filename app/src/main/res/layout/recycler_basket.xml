@@ -1,92 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cardview"
-    android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:layout_margin="5dp"
-    card_view:cardBackgroundColor="@color/colorAccent"
-    card_view:cardCornerRadius="10dp"
-    card_view:cardElevation="3dp"
-    card_view:contentPadding="1dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="cartItem"
+            type="com.tolaotesanya.kindeed.modellayer.model.CartItem" />
 
-    <RelativeLayout
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="100dp"
+        android:layout_margin="5dp"
+        card_view:cardBackgroundColor="@color/colorAccent"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardElevation="3dp"
+        card_view:contentPadding="1dp">
 
-        <ImageView
-            android:id="@+id/cart_item_image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="20dp"
-            android:src="@drawable/kindeed_logo"/>
 
-        <TextView
-            android:id="@+id/cart_text"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textAlignment="center"
-            android:fontFamily="@font/amarante"
-            android:text="@string/sample_product_name"
-            android:layout_marginTop="5dp"
-            android:textSize="18sp" />
-        <TextView
-            android:id="@+id/cart_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textAlignment="center"
-            android:layout_below="@+id/cart_text"
-            android:fontFamily="@font/abhaya_libre"
-            android:text="@string/price_sample"
-            android:layout_marginTop="1dp"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/cart_quantity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_below="@+id/cart_price"
-            android:textAlignment="center"
-            android:fontFamily="@font/abhaya_libre"
-            android:text="@string/quantity"
-            android:layout_marginTop="1dp"
-            android:textSize="16sp" />
-
-        <Spinner
-            android:id="@+id/quantitySpinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/cart_quantity"
-            android:layout_centerHorizontal="true"
-            android:entries="@array/quantity_array"
-            android:setValue="@{cartItem.quantity}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            card_view:cardCornerRadius="10dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="20dp"
-            card_view:cardBackgroundColor="@color/colorPrimary">
+            android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/cart_item_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/kindeed_logo"
+                android:productImage="@{cartItem.product.image}"/>
+
+            <TextView
+                android:id="@+id/cart_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:fontFamily="@font/amarante"
+                android:layout_marginTop="5dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:text="@{cartItem.product.itemName}"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/cart_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:layout_below="@+id/cart_text"
+                android:fontFamily="@font/abhaya_libre"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:text="@{String.valueOf(cartItem.product.price * cartItem.quantity)}"
+                android:layout_marginTop="1dp"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/cart_quantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_below="@+id/cart_price"
+                android:textAlignment="center"
+                android:fontFamily="@font/abhaya_libre"
+                android:text="@string/quantity"
+                android:layout_marginTop="1dp"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/quantitySpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cart_quantity"
+                android:layout_centerHorizontal="true"
+                android:entries="@array/quantity_array"
+                android:setValue="@{cartItem.quantity}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
+
+            <androidx.cardview.widget.CardView
                 android:id="@+id/remove"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:padding="7dp"
-                android:src="@drawable/cross" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                card_view:cardCornerRadius="10dp"
+                android:layout_alignParentEnd="true"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
+                card_view:cardBackgroundColor="@color/colorPrimary">
 
-        </androidx.cardview.widget.CardView>
+                <ImageView
+
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="7dp"
+                    android:src="@drawable/cross" />
+
+            </androidx.cardview.widget.CardView>
 
 
-    </RelativeLayout>
-
+        </RelativeLayout>
 
 
     </androidx.cardview.widget.CardView>
+</layout>

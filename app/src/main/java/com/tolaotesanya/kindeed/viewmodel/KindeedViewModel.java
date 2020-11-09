@@ -1,5 +1,6 @@
 package com.tolaotesanya.kindeed.viewmodel;
 
+import com.tolaotesanya.kindeed.modellayer.model.CartItem;
 import com.tolaotesanya.kindeed.modellayer.model.Product;
 import com.tolaotesanya.kindeed.repositories.CartRepository;
 import com.tolaotesanya.kindeed.repositories.KindeedRepository;
@@ -20,12 +21,16 @@ public class KindeedViewModel extends ViewModel {
         return repository.getProducts();
     }
 
+    public LiveData<Product> getProduct(){
+        return mutableProduct;
+    }
+
     public void setProduct(Product product) {
         mutableProduct.setValue(product);
     }
 
-    public LiveData<Product> getProduct() {
-        return mutableProduct;
+    public LiveData<List<CartItem>> getCart() {
+        return cartRepository.getCart();
     }
 
     public boolean addItemToCart(Product product) {

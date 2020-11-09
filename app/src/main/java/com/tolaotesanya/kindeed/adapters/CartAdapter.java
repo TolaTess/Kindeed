@@ -1,7 +1,9 @@
 package com.tolaotesanya.kindeed.adapters;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.tolaotesanya.kindeed.databinding.RecyclerBasketBinding;
 import com.tolaotesanya.kindeed.modellayer.model.CartItem;
@@ -41,6 +43,29 @@ public class CartAdapter extends ListAdapter<CartItem, CartAdapter.CartViewHolde
         public CartViewHolder(@NonNull RecyclerBasketBinding binding) {
             super(binding.getRoot());
             this.recyclerBasketBinding = binding;
+
+            recyclerBasketBinding.remove.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    cartInterface.deleteItem(getItem(getBindingAdapterPosition()));
+                }
+            });
+
+            recyclerBasketBinding.quantitySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    int quantity = position + 1;
+                    if(quantity == getItem(getBindingAdapterPosition()).getQuantity()){
+                        return;
+                    }
+                    cartInterface.changeQuantity(getItem(getBindingAdapterPosition()), quantity);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
         }
     }
 

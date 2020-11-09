@@ -34,7 +34,7 @@ public class KindeedRepository {
         productList.add(new Product(UUID.randomUUID().toString(), "Haircut",
                 "give 4 homeless people haircut",
                 "grooming",40, 3, "https://firebasestorage.googleapis.com/v0/b/appchatapplication-8a71b.appspot.com/o/profile_images%2FuJQiJMf3MJa7cnlVIg5B294Ykk22.jpg?alt=media&token=24acdf84-32f9-4059-be10-0a415dedfa83"));
-        productList.add(new Product(UUID.randomUUID().toString(), "Haircut",
+        productList.add(new Product(UUID.randomUUID().toString(), "Tops",
                 "give 5 tops for homeless people",
                 "grooming",30, 3, "https://firebasestorage.googleapis.com/v0/b/appchatapplication-8a71b.appspot.com/o/profile_images%2FyH8TZlXmfNRWz7We7SXBMgVCNYc2.jpg?alt=media&token=aad7588a-4995-4d8d-a242-eb4974e02a01"));
         mutableLiveData.setValue(productList);

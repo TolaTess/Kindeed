@@ -15,7 +15,7 @@
     <string name="description">Description</string>
     <string name="price_sample">5 EUR</string>
     <string name="sample_product_name">Bread</string>
-    <string name="quantity">quantity</string>
+    <string name="quantity">Qty</string>
     <string name="slogan">Sharing is caring</string>
     <string name="kindeed">Kindeed,</string>
     <string name="category">Category</string>

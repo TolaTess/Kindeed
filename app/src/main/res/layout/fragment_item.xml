@@ -6,9 +6,6 @@
         <variable
         name="kindeedViewModel"
         type="com.tolaotesanya.kindeed.viewmodel.KindeedViewModel"/>
-        <variable
-            name="mainInterface"
-            type="com.tolaotesanya.kindeed.adapters.ShopAdapter.MainInterface" />
     </data>
 
     <RelativeLayout
@@ -17,9 +14,6 @@
         android:background="@color/colorPrimaryDark"
         tools:context=".views.fragment.ItemFragment">
 
-<!--        <include-->
-<!--            layout="@layout/item_bar_layout"-->
-<!--            android:id="@+id/item_toolbar" />-->
 
         <TextView
             android:id="@+id/item_title_toolbar"
@@ -80,18 +74,10 @@
             android:enabled="true"
             android:layout_marginTop="20dp"
             android:layout_below="@+id/quanity"
-            android:onClick="@{() -> mainInterface.addItem(kindeedViewModel.product)}"
+            android:onClick="@{() -> kindeedViewModel.addItemToCart(kindeedViewModel.product)}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
-<!--        <include-->
-<!--            android:id="@+id/basket"-->
-<!--            layout="@layout/addtobasket_layout"-->
-<!--            android:layout_below="@+id/quanity"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_marginTop="50dp"-->
-<!--            android:layout_centerHorizontal="true" />-->
 
     </RelativeLayout>
 </layout>
