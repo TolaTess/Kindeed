@@ -91,10 +91,4 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.onNavDestinationSelected(item, navController) || super.onOptionsItemSelected(item);
     }
 
-//    private void logout() {
-//        Intent intent = new Intent(this, AuthActivity.class);
-//        intent.putExtra(AuthActivity.EXTRA_CLEAR_CREDENTIALS, true);
-//        startActivity(intent);
-//        finish();
-//    }
 }
