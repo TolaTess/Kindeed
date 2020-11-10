@@ -6,7 +6,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.tolaotesanya.kindeed.R;
+import com.tolaotesanya.kindeed.helper.BottomNavPresenter;
 import com.tolaotesanya.kindeed.modellayer.model.CartItem;
 import com.tolaotesanya.kindeed.viewmodel.KindeedViewModel;
 
@@ -22,6 +24,7 @@ import androidx.navigation.ui.NavigationUI;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
+    private static final int ACTIVITY_NUM = 0;
     private NavController navController;
     private KindeedViewModel viewModel;
     private int cartQuantity = 0;
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         navController = Navigation.findNavController(this, R.id.fragment_main);
         NavigationUI.setupActionBarWithNavController(this, navController);
+        setupBottomNav();
         viewModel = new ViewModelProvider(this).get(KindeedViewModel.class);
         viewModel.getCart().observe(this, new Observer<List<CartItem>>() {
             @Override
@@ -46,6 +50,12 @@ public class MainActivity extends AppCompatActivity {
                 invalidateOptionsMenu();
             }
         });
+    }
+
+    private void setupBottomNav() {
+        BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavViewBar);
+        BottomNavPresenter bottomNavPresenter = new BottomNavPresenter(this, ACTIVITY_NUM);
+        bottomNavPresenter.setupBottomNavigationView(bottomNavigationViewEx);
     }
 
     @Override

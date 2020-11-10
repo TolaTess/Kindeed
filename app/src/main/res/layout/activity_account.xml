@@ -7,6 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".views.activities.AccountActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Account"
+        android:textSize="20sp"
+        android:layout_centerInParent="true"/>
 
+    <!-- bottom navigation -->
+    <include layout="@layout/layout_bottom_nav"/>
 
 </RelativeLayout>
