@@ -34,6 +34,7 @@
                 android:productImage="@{product.image}"
                 />
 
+
             <TextView
                 android:id="@+id/p_text"
                 android:layout_width="wrap_content"
@@ -42,8 +43,7 @@
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                 android:text="@{product.itemName}"
                 android:layout_gravity="center"
-                android:maxWidth="200dp"
-                android:textSize="18sp" />
+                android:textSize="17sp" />
 
 
                 <TextView
@@ -53,46 +53,48 @@
                     android:fontFamily="@font/abhaya_libre"
                     android:text="@{product.description}"
                     android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:maxWidth="200dp"
+                    android:layout_marginBottom="5dp"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
                     android:textSize="16sp" />
+    <LinearLayout
+        android:id="@+id/lin1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/shape_kindeed"
+        android:padding="5dp"
+        >
 
-                <TextView
-                    android:id="@+id/p_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/amarante"
-                    android:text="@{String.valueOf(product.price) + `EUR`}"
-                    android:layout_gravity="center"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-                    android:textSize="16sp" />
+        <TextView
+            android:id="@+id/p_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/amarante"
+            android:textColor="@color/colorBlack"
+            android:text="@{String.valueOf(product.price) + `EUR`}"
+            android:layout_gravity="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:textSize="17sp" />
 
         <Button
             android:id="@+id/addtocart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add to cart"
+            android:textColor="@color/colorWhite"
+            android:fontFamily="@font/abhaya_libre"
+            android:textSize="17sp"
             android:layout_gravity="center"
             android:onClick="@{() -> mainInterface.addItem(product)}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-            style="@style/Widget.MaterialComponents.Button.TextButton"/>
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
-<!--        <androidx.cardview.widget.CardView-->
-<!--            android:id="@+id/addtocart"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            card_view:cardBackgroundColor="@color/colorAccent2"-->
-<!--            card_view:cardCornerRadius="10dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginTop="5dp"-->
-<!--            android:onClick="@{() -> mainInterface.addItem(product)}">-->
-
-<!--            <ImageView-->
-<!--                android:layout_width="40dp"-->
-<!--                android:layout_height="40dp"-->
-<!--                android:padding="7dp"-->
-<!--                android:src="@drawable/cart"/>-->
-
-<!--        </androidx.cardview.widget.CardView>-->
+    </LinearLayout>
 
 
     </LinearLayout>

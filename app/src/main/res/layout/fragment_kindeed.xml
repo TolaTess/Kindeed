@@ -7,9 +7,6 @@
     android:background="@color/colorPrimary"
     tools:context=".views.fragment.KindeedFragment">
 
-<!--    <include-->
-<!--        android:id="@+id/kindeed_toolbar"-->
-<!--        layout="@layout/app_bar_layout" />-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/share_food_pager"
