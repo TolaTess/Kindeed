@@ -1,5 +1,6 @@
 package com.tolaotesanya.kindeed.repositories;
 
+import com.tolaotesanya.kindeed.R;
 import com.tolaotesanya.kindeed.modellayer.model.Product;
 
 import java.util.ArrayList;
@@ -10,7 +11,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 public class KindeedRepository {
-
     private MutableLiveData<List<Product>> mutableLiveData;
 
     public LiveData<List<Product>> getProducts(){
@@ -24,19 +24,52 @@ public class KindeedRepository {
     private void loadProducts() {
         //get list of products
         List<Product> productList = new ArrayList<>();
+
         //room or database call here
-        productList.add(new Product(UUID.randomUUID().toString(), "Sandwish",
-                "donate 12 sandwish to homeless people in Dublin city center",
-                "food",24, 3, "https://firebasestorage.googleapis.com/v0/b/appchatapplication-8a71b.appspot.com/o/profile_images%2F8aSrAs6HsTWv7CyQVr0Qyxx7tGe2.jpg?alt=media&token=a8cc46dd-1ce0-48a4-ab91-7efc86e24d3a"));
+        productList.add(new Product(UUID.randomUUID().toString(), "Sandwich",
+                "Donate 12 sandwich to homeless people in Dublin city center",
+                "Food", 24, 3, R.drawable.sandwich));
         productList.add(new Product(UUID.randomUUID().toString(), "Chocolate",
-                "send 10 box of chocolate to children in Drogheda hospital",
-                "treats",40, 3, "https://firebasestorage.googleapis.com/v0/b/appchatapplication-8a71b.appspot.com/o/profile_images%2FeGTOsqTba8SPmJ4Cej7DqldoEtW2.jpg?alt=media&token=5e43cde9-1f36-4b5f-90fb-fa8df2feffbf"));
+                "Send 10 box of chocolate to children in Drogheda hospital",
+                "Children", 40, 3, R.drawable.chocolate));
         productList.add(new Product(UUID.randomUUID().toString(), "Haircut",
-                "give 4 homeless people haircut",
-                "grooming",40, 3, "https://firebasestorage.googleapis.com/v0/b/appchatapplication-8a71b.appspot.com/o/profile_images%2FuJQiJMf3MJa7cnlVIg5B294Ykk22.jpg?alt=media&token=24acdf84-32f9-4059-be10-0a415dedfa83"));
+                "Give 5 homeless people haircut",
+                "Grooming", 50, 3, R.drawable.men_hair_cut));
         productList.add(new Product(UUID.randomUUID().toString(), "Tops",
-                "give 5 tops for homeless people",
-                "grooming",30, 3, "https://firebasestorage.googleapis.com/v0/b/appchatapplication-8a71b.appspot.com/o/profile_images%2FyH8TZlXmfNRWz7We7SXBMgVCNYc2.jpg?alt=media&token=aad7588a-4995-4d8d-a242-eb4974e02a01"));
+                "Donate 5 tops for homeless people",
+                "Grooming", 30, 3, R.drawable.cardigans));
+        productList.add(new Product(UUID.randomUUID().toString(), "Party",
+                "Sponsor a child's birthday party",
+                "Donate", 60, 3, R.drawable.party));
+        productList.add(new Product(UUID.randomUUID().toString(), "Toys",
+                "Donate toys to an orphanage",
+                "Children", 50, 3, R.drawable.toys));
+        productList.add(new Product(UUID.randomUUID().toString(), "Food Supplies",
+                "Donate food supplies to a soup kitchen",
+                "Food", 40, 3, R.drawable.food_supplies));
+        productList.add(new Product(UUID.randomUUID().toString(), "Clothes",
+                "Donate cloth items to children in need",
+                "Children", 40, 3, R.drawable.clothes_children));
+
         mutableLiveData.setValue(productList);
     }
+/*
+    public void loadRawFile() {
+        //get raw json file
+        Resources resources = Resources.getSystem();
+        InputStream inputStream = resources.openRawResource(R.raw.products);
+        Scanner scanner = new Scanner(inputStream);
+        StringBuilder builder = new StringBuilder();
+        while (scanner.hasNextLine()){
+            builder.append(scanner.nextLine());
+        }
+
+        parseJson(builder.toString());
+    }
+
+    private void parseJson(String toString) {
+        Gson gson = new Gson();
+        Product product = gson.fromJson(toString, Product.class);
+        Log.i("TAG", "parse******" + product.toString());
+    }*/
 }
