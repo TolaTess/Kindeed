@@ -3,6 +3,7 @@ package com.tolaotesanya.kindeed.views.activities.auth;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -10,15 +11,16 @@ import android.widget.Toast;
 
 import com.auth0.android.Auth0;
 import com.auth0.android.Auth0Exception;
+import com.auth0.android.authentication.AuthenticationAPIClient;
 import com.auth0.android.authentication.AuthenticationException;
 import com.auth0.android.authentication.storage.SecureCredentialsManager;
+import com.auth0.android.authentication.storage.SharedPreferencesStorage;
 import com.auth0.android.provider.AuthCallback;
 import com.auth0.android.provider.VoidCallback;
 import com.auth0.android.provider.WebAuthProvider;
 import com.auth0.android.result.Credentials;
 import com.tolaotesanya.kindeed.R;
-import com.tolaotesanya.kindeed.coordinator.IntentPresenter;
-import com.tolaotesanya.kindeed.dependencies.DependencyRegistry;
+import com.tolaotesanya.kindeed.helper.IntentPresenter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,8 +29,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class AuthActivity extends AppCompatActivity {
     private Button loginButton;
 
-    private IntentPresenter intentPresenter;
     private Auth0 auth0;
+    private IntentPresenter intentPresenter;
 
     public static final String EXTRA_CLEAR_CREDENTIALS = "com.auth0.CLEAR_CREDENTIALS";
     public static final String EXTRA_ACCESS_TOKEN = "com.auth0.ACCESS_TOKEN";
@@ -41,15 +43,15 @@ public class AuthActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_auth);
         loginButton = findViewById(R.id.login_btn);
+
+        auth0 = new Auth0(this);
+        auth0.setOIDCConformant(true);
+        credentialsManager = new
+                SecureCredentialsManager(this,
+                new AuthenticationAPIClient(auth0),
+                new SharedPreferencesStorage(this));
         setupUI();
-        DependencyRegistry.shared.inject(this);
-    }
-
-    public void configureWith(Auth0 auth0, SecureCredentialsManager credentialsManager, IntentPresenter intentPresenter) {
-        this.auth0 = auth0;
-        this.credentialsManager = credentialsManager;
-        this.intentPresenter = intentPresenter;
-
+        intentPresenter = new IntentPresenter();
         //Check if the activity was launched to log the user out
         if (getIntent().getBooleanExtra(EXTRA_CLEAR_CREDENTIALS, false)) {
             logout();
@@ -60,8 +62,8 @@ public class AuthActivity extends AppCompatActivity {
             intentPresenter.showNextActivity(AuthActivity.this, credentialsManager);
         }
 
-
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -81,13 +83,9 @@ public class AuthActivity extends AppCompatActivity {
     }
 
     private void login() {
-        /*AuthenticationAPIClient authAPIClient = new AuthenticationAPIClient(auth0);
-        SharedPreferencesStorage sharedPrefStorage = new SharedPreferencesStorage(this);
-        final CredentialsManager credentialsManager = new CredentialsManager(authAPIClient, sharedPrefStorage);*/
-
         WebAuthProvider.login(auth0)
                 .withScheme("https")
-                .withScope("openid offline_access")
+                 .withScope("openid offline_access")
                 .withAudience(String.format("https://%s/userinfo", getString(R.string.com_auth0_domain)))
                 .start(AuthActivity.this, new AuthCallback() {
                             @Override
@@ -106,7 +104,7 @@ public class AuthActivity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        Toast.makeText(AuthActivity.this, "Error: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(AuthActivity.this, "Error authentication: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             }
@@ -140,12 +138,14 @@ public class AuthActivity extends AppCompatActivity {
 
         @Override
         public void onFailure(Auth0Exception error) {
+            Toast.makeText(AuthActivity.this, "Error logout: " + error.getMessage(), Toast.LENGTH_SHORT).show();
             // Log out canceled, keep the user logged in
-            intentPresenter.showNextActivity(AuthActivity.this, credentialsManager);
+           //intentPresenter.showNextActivity(AuthActivity.this, credentialsManager);
         }
     };
 
 /*    When calling the v2/logout you have to set federated, redirectTo and client_id and it has to be opened via CustomTabsIntent.
+https://dev-uugk8azf.eu.auth0.com/v2/logout
 
     Once the call is made, a redirect is called to your specified url which in turn should be handled by the android.app.Activity that started the call through the <intent-filter>
     similar to the way the RedirectActivity works within the current auth0 SDK. Then you can proceed with your normal logout flow,
