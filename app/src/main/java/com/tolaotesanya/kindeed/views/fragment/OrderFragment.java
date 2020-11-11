@@ -49,5 +49,14 @@ public class OrderFragment extends Fragment {
                 navController.navigate(R.id.action_orderFragment_to_kindeedFragment);
             }
         });
+
+        fragmentOrderBinding.continueProfileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Reset Cart
+                kindeedViewModel.resetCart();
+                navController.navigate(R.id.action_orderFragment_to_accountActivity);
+            }
+        });
     }
 }

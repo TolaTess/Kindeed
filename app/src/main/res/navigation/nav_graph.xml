@@ -45,7 +45,15 @@
         android:label="Order"
         tools:layout="@layout/fragment_order">
         <action
+            android:id="@+id/action_orderFragment_to_accountActivity"
+            app:destination="@id/accountActivity" />
+        <action
             android:id="@+id/action_orderFragment_to_kindeedFragment"
             app:destination="@id/kindeedFragment" />
     </fragment>
+    <activity
+        android:id="@+id/accountActivity"
+        android:name="com.tolaotesanya.kindeed.views.activities.AccountActivity"
+        android:label="activity_account"
+        tools:layout="@layout/activity_account" />
 </navigation>

@@ -3,47 +3,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.fragment.OrderFragment"
-    android:orientation="vertical"
     android:gravity="center"
-    >
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:background="@drawable/shape_kindeed"
-        android:padding="10dp"
-        >
+    android:orientation="vertical"
+    tools:context=".views.fragment.OrderFragment">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/abhaya_libre"
-        android:text="@string/thanks_order"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        />
+        android:text="Tina"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textColor="@color/colorPrimaryDark" />
 
-    <Space
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="16dp"/>
-
-    <Button
-        android:id="@+id/continueShoppingBtn"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:fontFamily="@font/archivo_black"
-        android:layout_gravity="center"
-        android:textColor="@color/textSecondary"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:text="@string/continue_shopping"
-        />
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/shape_kindeed"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/abhaya_libre"
+            android:text="@string/thanks_order"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/continueShoppingBtn"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="@font/archivo_black"
+                android:text="@string/continue_shopping"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/continueProfileBtn"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="@font/archivo_black"
+                android:text="@string/profile"
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+
     </LinearLayout>
+
 
 </LinearLayout>
